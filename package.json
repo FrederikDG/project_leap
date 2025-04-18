@@ -1,0 +1,11 @@
+{
+  "name": "project_leap",
+  "version": "1.0.0",
+  "description": "Project Leap is a way of elegantly displaying data sheets for companies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Frederik de Graaf, Eddie Thring & This January",
+  "license": "ISC"
+}

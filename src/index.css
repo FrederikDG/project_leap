@@ -1,0 +1,17 @@
+:root {
+  --color-black: #000000;
+  --color-secondary: #50e3c2;
+  --color-tertiary: #9013fe;
+  --color-quaternary: #f5a623;
+  --color-quinary: #d0021b;
+}
+
+body {
+  background: var(--color-black);
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+

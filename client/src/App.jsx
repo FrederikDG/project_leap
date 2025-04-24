@@ -6,7 +6,6 @@ function App() {
     <>
       <div>
           <img src="./leap.svg" className="logo leap" alt="Leap logo" />
-
       </div></>)
 }
 

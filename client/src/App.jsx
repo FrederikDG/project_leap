@@ -1,12 +1,23 @@
-import './App.css'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';      // ← import it
+import Dashboard from './components/Dashboard.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
 
-function App() {
-
+export default function App() {
   return (
-    <>
-      <div>
-          <img src="./leap.svg" className="logo leap" alt="Leap logo" />
-      </div></>)
+    <Routes>
+      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+      <Route path="/login" element={<Login />} />
++     <Route path="/register" element={<Register />} />  {/* ← new */}
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
+    </Routes>
+  );
 }
-
-export default App

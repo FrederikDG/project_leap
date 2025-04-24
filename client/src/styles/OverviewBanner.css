@@ -1,0 +1,12 @@
+.overview__banner{
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: 30px;
+    border: 2px solid var(--color-white);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.overview__banner:hover{
+    border: 2px solid var(--color-black);
+    box-shadow: 0 4 14px rgba(0, 0, 0, 0.2);
+}

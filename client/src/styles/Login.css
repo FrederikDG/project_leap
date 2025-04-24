@@ -12,3 +12,32 @@
     bottom: 10px;
     width: 50px;
 }
+
+.login__textfield__container{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1rem;
+}
+
+  .login__textfield{
+    background:none;
+    border: none;
+    font-size: 1.2rem;
+    font-family: "Universal Sans 460", sans-serif;
+    padding: 0.5rem;
+    border-bottom: 2px solid var(--color-grey-900);
+    color: var(--color-white);
+    transition: all 0.3s ease-in-out;
+
+  }
+
+  .login__textfield:focus{
+    outline: none;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--color-grey-900);
+  }
+
+  .login__textfield--password {
+    -webkit-text-security: disc;
+  }

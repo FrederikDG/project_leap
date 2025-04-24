@@ -1,0 +1,10 @@
+.login__button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-grey-900);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;}

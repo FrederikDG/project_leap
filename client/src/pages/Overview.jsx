@@ -6,9 +6,11 @@ const Overview = () => {
     <main className="overview">
       <div className="overview__container">
         <OverviewBanner title="Licensed Spectrum" link="link" />
+        <OverviewBanner title="Reputation Campaign" link="link" />
+        <OverviewBanner title="Distracted Driving" link="link" />
         <OverviewBanner title="Licensed Spectrum" link="link" />
-        <OverviewBanner title="Licensed Spectrum" link="link" />
-
+        <OverviewBanner title="Reputation Campaign" link="link" />
+        <OverviewBanner title="Distracted Driving" link="link" />
       </div>
     </main>
   );

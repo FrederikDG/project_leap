@@ -1,7 +1,12 @@
 :root {
   --color-black: #000000;
   --color-grey-900: #3d3c3f;
+  --color-grey-500: #808080;
+  --color-grey-300: #DFDFDF;
+  --color-grey-200: #E8E8E8;
+  --color-grey-100: #F9F9F9;
   --color-white: #ffffff;
+  --color-green-500:#82E18E;
 }
 
 
@@ -21,12 +26,13 @@
   src: url(./fonts/Universal-Sans-Display-460.woff2);
 }
 
-body {
-  background: var(--color-black);
+
+html, body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  font-family: "Neue Machina", sans-serif;
+  padding: 0;
+}
+
+body{
+  background-color: var(--color-black);
+  
 }

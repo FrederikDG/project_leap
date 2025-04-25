@@ -1,4 +1,3 @@
-// client/src/utils/api.js
 import axios from 'axios';
 
 const api = axios.create({
@@ -6,7 +5,6 @@ const api = axios.create({
   withCredentials: true,
 });
 
-// this lets you update the Authorization header on the fly
 export function setToken(token) {
   if (token) {
     api.defaults.headers.common["Authorization"] = `Bearer ${token}`;

@@ -36,9 +36,6 @@ export default function Login() {
       <p>
         Don’t have an account? <Link to="/register">Register here</Link>
       </p>
-      <div className="login__image">
-        <img className="logo leap login__logo" src="./leap.svg" alt="Login Illustration" />
-      </div>
     </div>
   );
 }

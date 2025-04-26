@@ -2,8 +2,9 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.jsx";
 import { Link } from "react-router-dom"; // Import Link for navigation
-import LoginButton from "../components/LoginButton.jsx"; // Import the LoginButton component
+import LoginButton from "../components/CircleButton.jsx"; // Import the LoginButton component
 import "../styles/Login.css"; // Assuming you have a CSS file for styling
+import CircleButton from "../components/CircleButton.jsx";
 export default function Login() {
   const [user, setUser] = useState({ username: "", password: "" });
   const { login } = useContext(AuthContext);
@@ -21,17 +22,27 @@ export default function Login() {
 
   return (
     <div className="login__container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} autoComplete="off">
         <div className="login__textfield__container">
-        <input className="login__textfield" value={user.username} onChange={(e) => setUser((u) => ({ ...u, username: e.target.value }))} placeholder="Username" required />
-        <input  className="login__textfield login__textfield--password"
-          type="password"
-          value={user.password}
-          onChange={(e) => setUser((u) => ({ ...u, password: e.target.value }))}
-          placeholder="Password"
-          required
-        />  <LoginButton animationTrigger="hover" image="./LOGIN_ARROW.svg"></LoginButton></div>
-    
+          <input
+            className="login__textfield"
+            autoComplete="off"
+            value={user.username}
+            onChange={(e) => setUser((u) => ({ ...u, username: e.target.value }))}
+            placeholder="Username"
+            required
+          />
+          <input
+            className="login__textfield login__textfield--password"
+            autoComplete="off"
+            type="password"
+            value={user.password}
+            onChange={(e) => setUser((u) => ({ ...u, password: e.target.value }))}
+            placeholder="Password"
+            required
+          />{" "}
+          <CircleButton animationTrigger="hover" image="./LOGIN_ARROW.svg" />
+        </div>
       </form>
       <p>
         Don’t have an account? <Link to="/register">Register here</Link>

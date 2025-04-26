@@ -17,3 +17,20 @@
   padding: 4rem;
   border-radius: 32px;
 }
+
+.add__button{
+  font-family: "Neue Machina", sans-serif;
+  font-size: 1.5rem;
+  color: var(--color-grey-500);
+  background-color: var(--color-grey-100);
+  border: var(--color-grey-300) 3px dashed;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  align-self: stretch; 
+  gap: 2rem;
+  flex-direction: column;
+  padding: 4rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}

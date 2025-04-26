@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/OverviewBanner.css";
+import "../styles/CampaignBanner.css";
 import { Link } from "react-router-dom";
 import StateFlag from "./StateFlag";
-const OverviewBanner = ({ title, link }) => {
+const CampaignBanner = ({ title, link }) => {
   return (
     <Link to={link} className="overview__banner">
       {" "}
@@ -16,4 +16,4 @@ const OverviewBanner = ({ title, link }) => {
   );
 };
 
-export default OverviewBanner;
+export default CampaignBanner;

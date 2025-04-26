@@ -1,6 +1,7 @@
 :root {
   --color-black: #000000;
   --color-grey-900: #3d3c3f;
+  
   --color-grey-500: #808080;
   --color-grey-300: #DFDFDF;
   --color-grey-200: #E8E8E8;
@@ -35,4 +36,31 @@ html, body {
 body{
   background-color: var(--color-black);
   
+}
+
+button{
+  background-color: var(--color-grey-100);
+  border: none;
+  cursor: pointer;
+}
+
+.text__button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Universal Sans 460", sans-serif;
+  padding: 0.3rem 0.7rem;
+  border-radius: 1rem;
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+  transition: all 0.3s ease-in-out;
+}
+
+.text__button:hover{
+  background-color: var(--color-grey-500);
+}
+
+.text__button img{
+  width: 0.8rem;
 }

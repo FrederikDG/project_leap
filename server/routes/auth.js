@@ -45,6 +45,16 @@ router.post('/login', async (req, res) => {
   res.json({ accessToken });
 });
 
+// Logout
+router.post('/logout', (req, res) => {
+  res.clearCookie('jid', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+  });
+  res.json({ message: 'Logged out successfully' });
+});
+
 // Refresh token
 router.post('/refresh_token', async (req, res) => {
   const token = req.cookies.jid;

@@ -1,43 +1,52 @@
-.login__container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    flex-direction: column;
+.login__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
 }
 
-.login__logo{
-    position: absolute;
-    bottom: 10px;
-    width: 50px;
+.login__logo {
+  position: absolute;
+  bottom: 10px;
+  width: 50px;
 }
 
-.login__textfield__container{
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 1rem;
+.login__textfield__container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
 }
 
-  .login__textfield{
-    background:none;
-    border: none;
-    font-size: 1.2rem;
-    font-family: "Universal Sans 460", sans-serif;
-    padding: 0.5rem;
-    border-bottom: 2px solid var(--color-grey-900);
-    color: var(--color-white);
-    transition: all 0.3s ease-in-out;
+.login__textfield {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  font-family: "Universal Sans 460", sans-serif;
+  padding: 0.5rem;
+  border-bottom: 2px solid var(--color-grey-900);
+  color: var(--color-white);
+  transition: all 0.3s ease-in-out;
+}
 
-  }
+.login__textfield:focus {
+  outline: none;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-grey-900);
+}
 
-  .login__textfield:focus{
-    outline: none;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid var(--color-grey-900);
-  }
+.login__textfield--password {
+  -webkit-text-security: disc;
+}
 
-  .login__textfield--password {
-    -webkit-text-security: disc;
-  }
+.login__textfield:-webkit-autofill,
+.login__textfield:-webkit-autofill:hover,
+.login__textfield:-webkit-autofill:focus,
+.login__textfield:-webkit-autofill:active {
+color: var(--color-green-500) !important;
+  -webkit-text-fill-color: var(--color-green-500) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-black) inset !important;
+  box-shadow: 0 0 0px 1000px var(--color-black) inset !important;
+}

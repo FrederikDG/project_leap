@@ -1,4 +1,4 @@
-.login{
+.register{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,27 +8,27 @@
   background-color: var(--color-black);
 }
 
-.login__container {
+.register__container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.login__logo {
+.register__logo {
   position: absolute;
   bottom: 10px;
   width: 50px;
 }
 
-.login__textfield__container {
+.register__textfield__container {
   display: flex;
   align-items: flex-end;
   justify-content: center;
   gap: 1rem;
 }
 
-.login__textfield {
+.register__textfield {
   background: none;
   border: none;
   font-size: 1.2rem;
@@ -39,27 +39,27 @@
   transition: all 0.3s ease-in-out;
 }
 
-.login__textfield:focus {
+.register__textfield:focus {
   outline: none;
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--color-grey-900);
 }
 
-.login__textfield--password {
+.register__textfield--password {
   -webkit-text-security: disc;
 }
 
-.login__textfield:-webkit-autofill,
-.login__textfield:-webkit-autofill:hover,
-.login__textfield:-webkit-autofill:focus,
-.login__textfield:-webkit-autofill:active {
+.register__textfield:-webkit-autofill,
+.register__textfield:-webkit-autofill:hover,
+.register__textfield:-webkit-autofill:focus,
+.register__textfield:-webkit-autofill:active {
 color: var(--color-white) !important;
   -webkit-text-fill-color: var(--color-white) !important;
   -webkit-box-shadow: 0 0 0px 1000px var(--color-black) inset !important;
   box-shadow: 0 0 0px 1000px var(--color-black) inset !important;
 }
 
-.login__header{
+.register__header{
   position: absolute;
   top: 1rem;
   left: 1rem;

@@ -10,12 +10,6 @@ const Navigation = ({ onEditClick }) => {
 
   const handleLogout = async () => {
     try {
-      await fetch("/logout", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-      });
-
       logout();
 
       navigate("/login");

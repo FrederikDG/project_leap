@@ -12,7 +12,7 @@ nav{
 
 
 
-.logo {
+.nav__container .logo {
     height: 3rem;
     will-change: filter;
     transition: filter 300ms;  

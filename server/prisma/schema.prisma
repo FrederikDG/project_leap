@@ -14,4 +14,31 @@ model User {
   tokenVersion  Int      @default(0)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+  companies     Company[]
+}
+
+model Company {
+  id         Int        @id @default(autoincrement())
+  name       String
+  color      String?
+  profilePic String?
+  owner      User       @relation(fields: [ownerId], references: [id], onDelete:   Cascade)
+  ownerId    Int
+  campaigns  Campaign[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+
+  @@index([ownerId])
+}
+
+model Campaign {
+  id         Int       @id @default(autoincrement())
+  title      String
+  link       String?
+  company    Company   @relation(fields: [companyId], references: [id], onDelete:   Cascade)
+  companyId  Int
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@index([companyId])
 }

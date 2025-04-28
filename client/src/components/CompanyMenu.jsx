@@ -10,13 +10,13 @@ export default function CompanyMenu() {
   const [newName, setNewName] = useState("");
   const [newColor, setNewColor] = useState("#000000");
   const [newProfilePic, setNewProfilePic] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
   const menuRef = useRef(null);
 
-  
   const icons = [
-    ...companies.map(c => ({
+    ...companies.map((c) => ({
       id: c.id,
-      src: c.profilePic ? URL.createObjectURL(c.profilePic) : undefined,
+      src: c.profilePicUrl || undefined,
       alt: c.name,
       color: c.color,
       isAdd: false,
@@ -25,56 +25,51 @@ export default function CompanyMenu() {
     { id: "add", src: "./BUTTON_ADD.svg", alt: "Add Company", isAdd: true },
   ];
 
-  
-  useEffect(() => {
-    if (order.length > 0) {
-      const topId = order[0];
-      const topIcon = icons.find(icon => icon.id === topId);
-      if (topIcon && topIcon.color && !topIcon.isAdd) {
-        document.body.style.backgroundColor = topIcon.color;
-      } else {
-        document.body.style.backgroundColor = ""; 
-      }
-    }
-  }, [order, icons]);
+  const toggleMenu = () => setOpen((o) => !o);
 
-  const toggleMenu = () => setOpen(o => !o);
-
-  const handleClick = id => {
+  const handleClick = (id) => {
     if (id === "add") {
       setIsModalOpen(true);
       setOpen(false);
       return;
     }
-    
     if (order[0] === id) {
       toggleMenu();
       return;
     }
-    
     selectCompany(id);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newCompany = {
-      id: Date.now().toString(),
-      name: newName,
-      color: newColor,
-      profilePic: newProfilePic,
-    };
-    
-    addCompany(newCompany);
-    
+    const fd = new FormData();
+    fd.append("name", newName);
+    fd.append("color", newColor);
+    if (newProfilePic) fd.append("profilePic", newProfilePic);
+
+    await addCompany(fd);
     setNewName("");
     setNewColor("#000000");
     setNewProfilePic(null);
+    setPreviewUrl(null);
     setIsModalOpen(false);
     setOpen(false);
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setNewProfilePic(file);
+      const url = URL.createObjectURL(file);
+      setPreviewUrl(url);
+    } else {
+      setNewProfilePic(null);
+      setPreviewUrl(null);
+    }
+  };
+
   useEffect(() => {
-    const onClickOutside = e => {
+    const onClickOutside = (e) => {
       if (open && menuRef.current && !menuRef.current.contains(e.target)) {
         setOpen(false);
       }
@@ -85,19 +80,17 @@ export default function CompanyMenu() {
 
   return (
     <div className="company__menu" ref={menuRef} style={{ "--open": open ? 1 : 0 }}>
-      {icons.map(icon => {
-        
+      {icons.map((icon) => {
         const pos = icon.isAdd ? order.length : order.indexOf(icon.id);
         const transform = pos > 0 ? (open ? `translateX(-${pos * 4}rem)` : "translateX(0)") : undefined;
-        
         const zIndex = order.length + 1 - pos;
         return (
           <button
             key={icon.id}
             className={
-              `company__button ${pos === 0 ? 'trigger' : 'item'}` +
-              (open ? ' visible' : '') +
-              (icon.isAdd ? ' add' : '')
+              `company__button ${pos === 0 ? "trigger" : "item"}` +
+              (open ? " visible" : "") +
+              (icon.isAdd ? " add" : "")
             }
             style={{
               "--i": pos,
@@ -119,7 +112,7 @@ export default function CompanyMenu() {
             <input
               type="text"
               value={newName}
-              onChange={e => setNewName(e.target.value)}
+              onChange={(e) => setNewName(e.target.value)}
               required
             />
           </label>
@@ -128,7 +121,7 @@ export default function CompanyMenu() {
             <input
               type="color"
               value={newColor}
-              onChange={e => setNewColor(e.target.value)}
+              onChange={(e) => setNewColor(e.target.value)}
             />
           </label>
           <label>
@@ -136,9 +129,19 @@ export default function CompanyMenu() {
             <input
               type="file"
               accept="image/*"
-              onChange={e => setNewProfilePic(e.target.files[0])}
+              onChange={handleFileChange}
             />
           </label>
+          {previewUrl && (
+            <div className="preview-container">
+              <p>Preview:</p>
+              <img
+                src={previewUrl}
+                alt="Profile Preview"
+                className="preview-image"
+              />
+            </div>
+          )}
           <button type="submit">Create</button>
         </form>
       </Modal>

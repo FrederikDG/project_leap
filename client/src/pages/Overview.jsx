@@ -18,7 +18,6 @@ const Overview = () => {
     setNewLink("");
   };
 
-  
   if (companies.length === 0) {
     return (
       <main className="overview">
@@ -29,15 +28,17 @@ const Overview = () => {
     );
   }
 
-  
   const campaigns = activeCompanyId ? campaignsByCompany[activeCompanyId] || [] : [];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!newTitle.trim() || !newLink.trim() || !activeCompanyId) return;
-    addCampaign(activeCompanyId, { id: Date.now().toString(), title: newTitle.trim(), link: newLink.trim() });
-    closeModal();
+    await addCampaign(activeCompanyId, { title: newTitle.trim(), link: newLink.trim() });
+    setNewTitle("");
+    setNewLink("");
+    setIsModalOpen(false);
   };
+
+  
 
   return (
     <main className="overview">

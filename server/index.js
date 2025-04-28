@@ -5,6 +5,9 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import { PrismaClient } from '@prisma/client';
 import authRouter from './routes/auth.js';
+import companyRouter  from './routes/company.js';
+import campaignRouter from './routes/campaign.js';
+
 import isAuth from './middleware/isAuth.js';
 import cors from 'cors';
 const app = express();
@@ -26,7 +29,9 @@ app.use(
 
 // mount auth routes under /auth
 app.use('/auth', authRouter);
-
+app.use('/api/companies', companyRouter);
+app.use('/api/companies/:companyId/campaigns', campaignRouter);
+app.use('/uploads', express.static('uploads'));
 // protected endpoint
 app.get('/api/secure-data', isAuth, (req, res) => {
   res.json({ secret: `Your user ID is ${req.userId}` });

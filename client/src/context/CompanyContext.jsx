@@ -1,56 +1,82 @@
-import React, { createContext, useState, useEffect } from "react";
-
+import React, { createContext, useState, useEffect, useContext } from "react";
+import api, { fetchCompanies as _fetchCompanies, fetchCampaigns, createCampaign } from "../utils/api.js";
+import { AuthContext } from "./AuthContext.jsx";
 
 export const CompanyContext = createContext();
 
-
 export function CompanyProvider({ children }) {
-  
+  const { accessToken } = useContext(AuthContext);
   const [companies, setCompanies] = useState([]);
   const [order, setOrder] = useState([]);
   const [activeCompanyId, setActiveCompanyId] = useState(null);
-
-  
   const [campaignsByCompany, setCampaignsByCompany] = useState({});
 
-  
+  // Load companies once authenticated
   useEffect(() => {
-    if (order.length === 0 && companies.length > 0) {
-      setOrder(companies.map(c => c.id));
-      setActiveCompanyId(companies[0].id);
+    if (!accessToken) return;
+    (async () => {
+      try {
+        const response = await _fetchCompanies();
+        const data = response.data;
+        // Build full URLs for profile pictures
+        const withUrls = data.map(c => ({
+          ...c,
+          profilePicUrl: c.profilePic ? `/uploads/${c.profilePic}` : null
+        }));
+
+        setCompanies(withUrls);
+        const ids = withUrls.map(c => c.id);
+        setOrder(ids);
+        if (ids.length) setActiveCompanyId(ids[0]);
+
+        const map = {};
+        withUrls.forEach(c => { map[c.id] = c.campaigns || []; });
+        setCampaignsByCompany(map);
+      } catch (err) {
+        console.error("Failed to load companies", err);
+      }
+    })();
+  }, [accessToken]);
+
+  // Create a new company with optional image
+  const addCompany = async (formData) => {
+    try {
+      const response = await api.post('/api/companies', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+      const c = response.data;
+      const newCompany = {
+        ...c,
+        profilePicUrl: c.profilePic ? `/uploads/${c.profilePic}` : null
+      };
+
+      setCompanies(prev => [newCompany, ...prev]);
+      setOrder(prev => [newCompany.id, ...prev]);
+      setActiveCompanyId(newCompany.id);
+      setCampaignsByCompany(prev => ({ ...prev, [newCompany.id]: [] }));
+    } catch (err) {
+      console.error("Failed to create company", err);
     }
-  }, [companies]);
-
-  /**
-   * Add a new company and make it the active one
-   * @param {{id: string, name: string, color: string, profilePic: File}} company
-   */
-  const addCompany = (company) => {
-    setCompanies(prev => [company, ...prev]);
-    setOrder(prev => [company.id, ...prev.filter(id => id !== company.id)]);
-    setActiveCompanyId(company.id);
   };
 
-  /**
-   * Select an existing company by id
-   * @param {string} id
-   */
+  // Select a company
   const selectCompany = (id) => {
-    
-    setOrder(prev => [id, ...prev.filter(x => x !== id)]);
     setActiveCompanyId(id);
+    setOrder(prev => [id, ...prev.filter(x => x !== id)]);
   };
 
-  /**
-   * Add a campaign for a specific company
-   * @param {string} companyId
-   * @param {{id: string, title: string, link?: string}} campaign
-   */
-  const addCampaign = (companyId, campaign) => {
-    setCampaignsByCompany(prev => ({
-      ...prev,
-      [companyId]: [...(prev[companyId] || []), campaign]
-    }));
+  // Add a new campaign
+  const addCampaign = async (companyId, campaignInput) => {
+    try {
+      const response = await createCampaign(companyId, campaignInput);
+      const camp = response.data;
+      setCampaignsByCompany(prev => ({
+        ...prev,
+        [companyId]: [...(prev[companyId] || []), camp]
+      }));
+    } catch (err) {
+      console.error("Failed to create campaign", err);
+    }
   };
 
   return (

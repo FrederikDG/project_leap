@@ -8,7 +8,7 @@
 .overview__container {
   background-color: var(--color-white);
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: stretch;
   align-self: stretch; 
   gap: 2rem;
@@ -16,6 +16,7 @@
   margin: 0rem 1rem;
   padding: 4rem;
   border-radius: 32px;
+  transition: height 0.3s ease-in-out;
 }
 
 .add__button{

@@ -7,6 +7,9 @@ import "../styles/Overview.css";
 const Overview = () => {
   const { companies, activeCompanyId, campaignsByCompany, addCampaign } = useContext(CompanyContext);
 
+  const activeCompany = companies.find(c => c.id === activeCompanyId) || {};
+  const companyColor  = activeCompany.color;
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newLink, setNewLink] = useState("");
@@ -43,8 +46,9 @@ const Overview = () => {
   return (
     <main className="overview">
       <div className="overview__container">
+        
         {campaigns.map((camp) => (
-          <CampaignBanner key={camp.id} title={camp.title} link={camp.link} />
+          <CampaignBanner key={camp.id} title={camp.title} link={camp.link} color={companyColor} />
         ))}
 
         <button className="add__button" onClick={openModal}>

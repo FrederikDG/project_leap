@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import api from '../utils/api.js';
-
+import { useParams } from 'react-router-dom';
 import '../styles/Dashboard.css';
 
 export default function Dashboard() {
-  const [secret, setSecret] = useState('');
+  const { campaignSlug } = useParams();
 
-  useEffect(() => {
-    api
-      .get('/api/secure-data')
-      .then(res => setSecret(res.data.secret))
-      .catch(() => setSecret('Failed to fetch secret'));
-  }, []);
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <p>Protected message: {secret}</p>
+    <div className='content__container'>
+      <h1>{campaignSlug.replace(/-/g, ' ')} Dashboard</h1>
     </div>
   );
 }

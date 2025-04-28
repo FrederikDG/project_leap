@@ -5,20 +5,6 @@
   justify-content: center;
 }
 
-.overview__container {
-  background-color: var(--color-white);
-  display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-self: stretch; 
-  gap: 2rem;
-  flex-direction: column;
-  margin: 0rem 1rem;
-  padding: 4rem;
-  border-radius: 32px;
-  transition: height 0.3s ease-in-out;
-}
-
 .add__button{
   font-family: "Universal Sans 306", sans-serif;
   font-size: 1.5rem;

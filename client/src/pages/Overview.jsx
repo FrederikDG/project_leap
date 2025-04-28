@@ -7,8 +7,8 @@ import "../styles/Overview.css";
 const Overview = () => {
   const { companies, activeCompanyId, campaignsByCompany, addCampaign } = useContext(CompanyContext);
 
-  const activeCompany = companies.find(c => c.id === activeCompanyId) || {};
-  const companyColor  = activeCompany.color;
+  const activeCompany = companies.find((c) => c.id === activeCompanyId) || {};
+  const companyColor = activeCompany.color;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
@@ -24,7 +24,7 @@ const Overview = () => {
   if (companies.length === 0) {
     return (
       <main className="overview">
-        <div className="overview__container">
+        <div className="content__container">
           <p>Please create a company to view and add campaigns.</p>
         </div>
       </main>
@@ -41,16 +41,13 @@ const Overview = () => {
     setIsModalOpen(false);
   };
 
-  
-
   return (
     <main className="overview">
-      <div className="overview__container">
-        
-        {campaigns.map((camp) => (
-          <CampaignBanner key={camp.id} title={camp.title} link={camp.link} color={companyColor} />
-        ))}
-
+      <div className="content__container">
+        {campaigns.map((camp) => {
+          const slug = camp.title.trim().toLowerCase().replace(/\s+/g, "-");
+          return <CampaignBanner key={camp.id} title={camp.title} link={`/dashboard/${slug}`} color={companyColor} />;
+        })}
         <button className="add__button" onClick={openModal}>
           + Add Campaign
         </button>

@@ -22,17 +22,12 @@ export default function App() {
           </PrivateRoute>
         }
       >
-        {/* if someone hits “/” → redirect to “/overview” */}
         <Route index element={<Navigate to="overview" replace />} />
 
-        {/* these become “/overview” and “/dashboard” */}
         <Route path="overview" element={<Overview />} />
-        <Route path="dashboard" element={<Dashboard />} />
-
-        {/* add more private pages here */}
+        <Route path="dashboard/:campaignSlug" element={<Dashboard />} />
       </Route>
 
-      {/* catch‐all → send back to login or a 404 page */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

@@ -1,39 +1,49 @@
 .company__menu {
-    position: relative;
-    width: 3rem;
-    height: 3rem;
-  }
-  
-  .company__button {
-    --i: 0;
-    --open: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3rem;
-    height: 3rem;
-    padding: 0;
-    border: none;
-    background: none;
-    overflow: hidden;
-    cursor: pointer;
-    outline: var(--color-black) 3px solid;
-    outline-offset: -1px;
-    transform: translateX(calc(var(--open) * var(--i) * -4rem));
-    border-radius: calc(
-      /* when closed (open=0) this is 50%,
-         when open (open=1) this is 1rem */
-      (1 - var(--open)) * 50% + var(--open) * 1rem
-    );
-    
-    transition:
-      transform     0.3s ease-in-out,
-      border-radius 0.3s ease-in-out;
-  }
-  
-  .company__button img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+}
+
+.company__button {
+  --i: 0;
+  --open: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: none;
+  background: none;
+  overflow: hidden;
+  cursor: pointer;
+  outline: var(--color-black) 3px solid;
+  outline-offset: -1px;
+  transform: translateX(calc(var(--open) * var(--i) * -4rem));
+  border-radius: calc(/* when closed (open=0) this is 50%,
+         when open (open=1) this is 1rem */ (1 - var(--open)) * 50% + var(--open) * 1rem);
+
+  transition:
+    transform 0.3s ease-in-out,
+    border-radius 0.3s ease-in-out;
+}
+
+.company__button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.company__button.add {
+  border: var(--color-grey-300) 3px dashed;
+  color: var(--color-grey-300);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.company__button.add img {
+width: 20px;
+height: 20px;
+object-fit: contain;
+}

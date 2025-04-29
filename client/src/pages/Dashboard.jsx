@@ -10,14 +10,11 @@ export default function Dashboard() {
   const companyColor = activeCompany.color;
   const companyLogo = activeCompany.profilePicUrl;
   const campaigns = campaignsByCompany[activeCompanyId] || [];
-  const campaign =
-    campaigns.find(
-      (c) => c.title.trim().toLowerCase().replace(/\s+/g, "-") === campaignSlug
-    ) || {};
+  const campaign = campaigns.find((c) => c.title.trim().toLowerCase().replace(/\s+/g, "-") === campaignSlug) || {};
   return (
     <div className="content__container campaign__overview">
       <div className="campaign__overview__header">
-        <img src={companyLogo} alt={`${activeCompany.name || "Company"} logo"`} className="company__logo"/>
+        <img src={companyLogo} alt={`${activeCompany.name || "Company"} logo"`} className="company__logo" />
         <div className="campaign__info__container">
           <h2 className="campaign__title">{campaign.title || campaignSlug.replace(/-/g, " ")}</h2>
           <p className="campaign__data">
@@ -27,8 +24,7 @@ export default function Dashboard() {
             </span>{" "}
             with a total spend of <br />
             <strong> $ 1,750,987</strong>.{" "}
-            
-            <strong className="flight__activity" style={{ color: companyColor }}>
+            <strong className="flight__acti</div>vity" style={{ color: companyColor }}>
               Flight 1 is active
             </strong>{" "}
             and{" "}
@@ -46,11 +42,15 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-<TimelineChart flights={[
-        { name: "Flight 1", start: "2025-03-23", end: "2025-05-31", spend: 634006, status: "active" },
-        { name: "Flight 2", start: "2025-06-01", end: "2025-09-30", spend: 634006, status: "inactive" },
-        { name: "Flight 3", start: "2025-10-01", end: "2025-12-29", spend: 634006, status: "inactive" },
-      ]} color={companyColor} />
+      <TimelineChart
+        flights={[
+          { start: "2025-03-23", end: "2025-05-25", spend: 634006 },
+          { start: "2025-05-25", end: "2025-09-30", spend: 546846 },
+          { start: "2025-09-30", end: "2026-01-01", spend: 570135 },
+          
+        ]}
+        color={companyColor}
+      />
     </div>
   );
 }

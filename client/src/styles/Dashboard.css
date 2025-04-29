@@ -63,8 +63,8 @@
 }
 
 .project__goal__text{
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: var(--color-primary);
     font-family: "Ivy Ora Display", sans-serif;
-    max-width:27rem;
+    max-width:32rem;
 }

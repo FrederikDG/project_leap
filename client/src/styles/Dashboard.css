@@ -1,0 +1,70 @@
+.campaign__title {
+  font-size: 5rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  font-family: "universal sans 306", sans-serif;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-transform: capitalize;
+}
+
+.campaign__overview__header {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  font-family: "universal sans 306", sans-serif;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.campaign__info__container {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 60%;
+  font-size: 2rem;
+}
+
+.campaign__data{
+  max-width: 50rem;
+}
+
+.flight__count__container {
+  display: inline-block;
+  border: 2px solid var(--color-primary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--color-grey-200);
+}
+
+.flight__count {
+  font-family: "Ivy Ora Display", sans-serif;
+  font-style: italic;
+}
+
+.project__goal__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.project__goal__title
+{
+  font-size: 1rem;
+  color: var(--color-primary);
+  font-family: "Neue Machina", sans-serif;
+  color: var(--color-grey-500);
+  font-weight: 600;
+}
+
+.project__goal__text{
+    font-size: 1rem;
+    color: var(--color-primary);
+    font-family: "Ivy Ora Display", sans-serif;
+    max-width:27rem;
+}

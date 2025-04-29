@@ -26,10 +26,12 @@
   justify-content: flex-start;
   max-width: 60%;
   font-size: 2rem;
+  
 }
 
 .campaign__data{
   max-width: 50rem;
+  line-height: 130%;
 }
 
 .flight__count__container {
@@ -67,4 +69,41 @@
     color: var(--color-primary);
     font-family: "Ivy Ora Display", sans-serif;
     max-width:32rem;
+}
+
+.flight__info__container{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+margin:  2rem 0rem;
+  width: 100%;
+
+}
+
+.flight__info__container .header__container{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.flight__info__container .header__container h4{
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-family: "Universal Sans 306", sans-serif;
+  font-weight: 500;
+}
+
+.flight__info__description{
+  font-size: 2rem;
+  color: var(--color-primary);
+  font-family: "Universal Sans 306", sans-serif;
+  max-width: 45rem;
+  line-height: 130%;
+}
+
+.data__container__container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }

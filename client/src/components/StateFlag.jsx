@@ -10,7 +10,7 @@ export default function StateFlag({ type, state, color = "#82E184" }) {
     <>
       {type === "campaign" ? (
         <div className={`flag__container ${type}`} style={containerStyle}>
-          <img className="icon" src="./LIGHTNING.svg" alt="lightning" />
+          <img className="icon" src="/LIGHTNING.svg" alt="lightning" />
           <p>campaign {state}</p>
         </div>
       ) : type === "flight" ? (

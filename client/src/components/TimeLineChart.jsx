@@ -49,7 +49,7 @@ export default function TimelineChartD3({ flights, color }) {
     svg
       .append("g")
       .attr("class", "grid x-grid")
-      .attr("transform", `translate(0, ${height - margin.bottom})`)
+      .attr("transform", `translate(-1, ${height - margin.bottom})`)
       .call(
         d3
           .axisBottom(xScale)
@@ -250,11 +250,11 @@ export default function TimelineChartD3({ flights, color }) {
 
       const label = g
         .append("text")
-        .text("Active")
+        .text("ACTIVE")
         .attr("x", 5)
-        .attr("y", 2)
+        .attr("y", 1)
         .attr("fill", "#000")
-        .style("font-size", "12px")
+        .style("font-size", "10px")
         .style("font-weight", 500)
         .style("font-family", "'Neue Machina', sans-serif");
 

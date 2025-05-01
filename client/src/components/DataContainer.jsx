@@ -1,23 +1,31 @@
-import React from "react";
-import "../styles/DataContainer.css";
-const DataContainer = ({ title, data, info, indicators }) => {
-    const [showInfo, setShowInfo] = React.useState(false);
+// DataContainer.jsx
+import React, { useState } from 'react';
+import '../styles/DataContainer.css';
 
-    return (
-        <div
-            className="data__container"
-            
-        >{showInfo && <span className="data__info">{info}</span>}
-           {!showInfo && <span className="data__title">{title}</span>}
-            <span className="data__data">{data}</span>
-            {info && (
-                <>
-                    <img onMouseEnter={() => setShowInfo(true)}
-            onMouseLeave={() => setShowInfo(false)} className="info__icon" src="../INFO_ICON.svg" alt="INFO ICON" />
-                </>
-            )}
-        </div>
-    );
+const DataContainer = ({ title, data, info }) => {
+  const [iconHovered, setIconHovered] = useState(false);
+
+  // only add the class when there's info *and* the icon is hovered
+  const containerClass = iconHovered && info
+    ? 'data__container info-hovered'
+    : 'data__container';
+
+  return (
+    <div className={containerClass}>
+      <span className="data__title">{title}</span>
+      {info && <span className="data__info">{info}</span>}
+      <span className="data__data">{data}</span>
+      {info && (
+        <img
+          src="../INFO_ICON.svg"
+          alt="Info icon"
+          className="info__icon"
+          onMouseEnter={() => setIconHovered(true)}
+          onMouseLeave={() => setIconHovered(false)}
+        />
+      )}
+    </div>
+  );
 };
 
 export default DataContainer;

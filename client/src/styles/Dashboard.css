@@ -34,15 +34,15 @@
   line-height: 130%;
 }
 
-.flight__count__container {
+.box__text__container {
   display: inline-block;
   border: 2px solid var(--color-primary);
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 0.25rem;
   background-color: var(--color-grey-200);
 }
 
-.flight__count {
+.box__text {
   font-family: "Ivy Ora Display", sans-serif;
   font-style: italic;
 }
@@ -55,13 +55,14 @@
   width: 100%;
 }
 
-.project__goal__title
+.addition__text
 {
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: var(--color-primary);
   font-family: "Neue Machina", sans-serif;
   color: var(--color-grey-500);
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .project__goal__text{
@@ -106,4 +107,19 @@ margin:  2rem 0rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+}
+
+.progressbar__container{
+  margin: 1.5rem 0rem;
+}
+
+.progressbar__dates__container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0rem;
+}
+
+.progressbar__dates__container p{
+  font-family: "Universal Sans 460", sans-serif;
 }

@@ -1,37 +1,65 @@
-.data__container{
+/* DataContainer.css */
+.data__container {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
     background-color: var(--color-grey-100);
     padding: 1.5rem;
-    gap: 0.5rem;
+    gap: 1.8rem;
     border-radius: 1rem;
     border: 1px solid var(--color-grey-200);
-    position: relative;
-}
-
-.data__title, .data__info{
+  }
+  
+  /* title / info share the same transition settings */
+  .data__title,
+  .data__info {
     font-size: 1rem;
-    color: var(--color-primary);
     font-family: "Neue Machina", sans-serif;
     color: var(--color-grey-500);
-    margin-bottom: 1rem;
-    text-transform: lowercase;
-}
-
-.data__data{
+    max-width: 20rem;
+    transition: opacity 0.2s ease-in-out,
+                transform 0.2s ease-in-out;
+    position: relative;
+    margin: 0; /* reset default span margins */
+  }
+  
+  /* data stays the same */
+  .data__data {
     font-size: 2rem;
     color: var(--color-primary);
     font-family: "Universal Sans 306", sans-serif;
     font-weight: 500;
-}
-
-.info__icon{
+  }
+  
+  /* info icon position */
+  .info__icon {
     position: absolute;
     right: 1.5rem;
-}
-
-.data__info{
+    top: 1.5rem;
+  }
+  
+  /* initial states */
+  .data__title {
+    opacity: 1;
+    transform: translateY(0);
+    text-transform: lowercase;
+  }
+  .data__info {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(0.5rem);
     text-transform: none;
-}
+  }
+  
+  /* only when the .info-hovered class is on the container */
+  .data__container.info-hovered .data__title {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  
+  .data__container.info-hovered .data__info {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  

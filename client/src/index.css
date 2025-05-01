@@ -54,6 +54,11 @@ button {
   cursor: pointer;
 }
 
+p{
+  font-family: 'Universal Sans 306', sans-serif;
+  
+}
+
 .content__container {
   background-color: var(--color-white);
   display: flex;

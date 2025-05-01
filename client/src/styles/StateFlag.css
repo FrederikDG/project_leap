@@ -2,13 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Neue Machina', sans-serif;
-    font-weight: 500;
-    font-size: 0.8rem;
     color: var(--color-black);
-    padding: 4px 6px;
+    padding: 6px 6px 3px 7px;
     border-radius: 4px;
     gap: 8px;
+    width: fit-content;
 }
 
 .flag__container.campaign{
@@ -21,5 +19,13 @@
 }
 
 .flag__container .icon{
-height: 10px;
+height: 12px;
+margin-top: -4px;
+}
+
+.flag__container p{
+    font-family: 'Neue Machina', sans-serif;
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-transform: uppercase;
 }

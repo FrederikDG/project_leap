@@ -1,0 +1,11 @@
+.channel__graph__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.channel__graph__container .controls{
+    align-self: flex-end;
+    margin-right: 1rem;
+}

@@ -1,0 +1,7 @@
+.pie__chart__container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap: 1rem;
+  margin: 3rem 0rem;
+}

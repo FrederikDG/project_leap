@@ -7,6 +7,9 @@ import ChannelGraph from "../components/ChannelGraph.jsx";
 import ProgressBar from "../components/ProgressBar.jsx";
 import DataContainer from "../components/DataContainer.jsx";
 import StateFlag from "../components/StateFlag.jsx";
+import ChannelContainer from "../components/ChannelContainer.jsx";
+import KeywordContainer from "../components/KeywordContainer.jsx";
+import PieChart from "../components/PieChart.jsx";
 export default function Dashboard() {
   const { campaignSlug } = useParams();
   const { companies, activeCompanyId, campaignsByCompany } = useContext(CompanyContext);
@@ -113,13 +116,82 @@ export default function Dashboard() {
               ],
             }}
             color={companyColor}
-          />
+          />{" "}
+          <div className="channels__container">
+            <div className="channel__info__container">
+              <p className="channel__info__name">Name</p>
+              <p className="channel__info__impressions">Impressions</p>
+              <p className="channel__info__cpm">CPM</p>
+              <p className="channel__info__yoy">YoY</p>
+              <p className="channel__info__benchmark">Benchmark</p>
+            </div>
+            <ChannelContainer
+              logo="https://images.vexels.com/media/users/3/137253/isolated/preview/90dd9f12fdd1eefb8c8976903944c026-facebook-icon-logo.png"
+              name="Facebook"
+              previousImpressions="75234"
+              currentImpressions="158492"
+              CPM="$4.12"
+              YoY="8.3%"
+              Benchmark="8,342 vs 9,875"
+            />
+            <ChannelContainer
+              logo="https://i.pinimg.com/736x/36/6f/0c/366f0ca4f3546a6e34f8c5730658616c.jpg"
+              name="Youtube TV"
+              previousImpressions="91247"
+              currentImpressions="142389"
+              CPM="$3.89"
+              YoY="2.4%"
+              Benchmark="7,902 vs 10,231"
+            />
+            <ChannelContainer
+              logo="https://content.blackhawknetwork.com/gcmimages/product/xxlarge/BFMPT2PGYN04GXBH0Y36CNMD88_0612202306:15:10.PNG"
+              name="Hulu"
+              previousImpressions="63458"
+              currentImpressions="175301"
+              CPM="$5.47"
+              YoY="-1.2%"
+              Benchmark="-"
+            />
+            <ChannelContainer name="Wallscape #857" previousImpressions="47826" currentImpressions="110239" CPM="$6.03" YoY="12.7%" Benchmark="-" />
+            <ChannelContainer
+              name="Bus USKs"
+              previousImpressions="5678234"
+              currentImpressions="187920"
+              CPM="$3.21"
+              YoY="4.5%"
+              Benchmark="7,301 vs 9,450"
+            />
+          </div>
         </div>
         <div className="content__container flight__search__container">
           <div className="flight__info__container">
             <div className="header__container">
               <img src="/SEARCH_ICON.svg" alt="OVERVIEW_ICON" />
               <h4>Search Overview</h4>
+            </div>{" "}
+          </div>
+          <div className="search__container">
+            <div className="keywords__container">
+              <p className="addition__text keywords__title">top 5 keywords</p>
+              <div className="keywords__list">
+                <div className="keywords__info__container">
+                  <p className="keywords__info__name">Keyword</p>
+                  <p className="keywords__info__impressions">Impressions</p>
+                  <p className="keywords__info__click">Clicks</p>
+                  <p className="keywords__info__cpc">CPC</p>
+                </div>
+                <KeywordContainer keyword="licensed spectrum" impressions="1,234,567" click="47557" cpc="$1.23" />
+                <KeywordContainer keyword="spectrum auction" impressions="1,234,567" click="47557" cpc="$1.23" />
+                <KeywordContainer keyword="spectrum policy" impressions="1,234,567" click="47557" cpc="$1.23" />
+                <KeywordContainer keyword="spectrum allocation" impressions="1,234,567" click="47557" cpc="$1.23" />
+                <KeywordContainer keyword="spectrum management" impressions="1,234,567" click="47557" cpc="$1.23" />
+              </div>
+            </div>
+            <div className="search__data__container">
+              <DataContainer title="search impression share" data="36%" />
+              <DataContainer title="CTR" data="5.65%" />
+              <DataContainer title="CPC" data="$1.76" />
+              <DataContainer title="total clicks" data="47557" />
             </div>
           </div>
         </div>
@@ -133,6 +205,17 @@ export default function Dashboard() {
               Licensed Spectrum is an awareness-focused campaign with a heavily digital strategy and targeted DC OOH placements.
             </p>
           </div>
+          <PieChart
+            className="pie__chart"
+            data={[
+              { name: "Facebook", budget: 123456 },
+              { name: "Hulu", budget: 234567 },
+              { name: "Youtube TV", budget: 345678 },
+              { name: "Wallscape #857", budget: 456789 },
+              { name: "Bus USKs", budget: 567890 },
+            ]}
+            color={companyColor}
+          />
         </div>
       </div>
     </main>

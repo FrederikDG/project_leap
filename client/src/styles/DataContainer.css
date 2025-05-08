@@ -14,8 +14,10 @@
   /* title / info share the same transition settings */
   .data__title,
   .data__info {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-family: "Neue Machina", sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
     color: var(--color-grey-500);
     max-width: 20rem;
     transition: opacity 0.2s ease-in-out,
@@ -43,13 +45,11 @@
   .data__title {
     opacity: 1;
     transform: translateY(0);
-    text-transform: lowercase;
   }
   .data__info {
     position: absolute;
     opacity: 0;
     transform: translateY(0.5rem);
-    text-transform: none;
   }
   
   /* only when the .info-hovered class is on the container */

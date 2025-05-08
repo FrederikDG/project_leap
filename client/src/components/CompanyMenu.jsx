@@ -87,11 +87,7 @@ export default function CompanyMenu() {
         return (
           <button
             key={icon.id}
-            className={
-              `company__button ${pos === 0 ? "trigger" : "item"}` +
-              (open ? " visible" : "") +
-              (icon.isAdd ? " add" : "")
-            }
+            className={`company__button ${pos === 0 ? "trigger" : "item"}` + (open ? " visible" : "") + (icon.isAdd ? " add" : "")}
             style={{
               "--i": pos,
               zIndex,
@@ -107,41 +103,29 @@ export default function CompanyMenu() {
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <h2>Add Company</h2>
         <form className="company-form" onSubmit={handleSubmit}>
-          <label>
-            Name:
-            <input
-              type="text"
-              value={newName}
-              onChange={(e) => setNewName(e.target.value)}
-              required
+          <div className="form__fields">
+            <input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} required placeholder="Name" />
+            <label
+              className={`file__circle ${previewUrl ? "has-preview" : ""}`}
+              style={{ backgroundImage: previewUrl ? `url(${previewUrl})` : "none" }}
+            >
+              <input type="file" accept="image/*" onChange={handleFileChange} />
+              {!previewUrl && <img className="placeholder-icon" src="/BUTTON_ADD_SMALL.svg" alt="Add Icon" />}
+              {previewUrl && <img className="edit__icon" src="/EDIT_ICON.svg" alt="Edit Icon" />}
+            </label>
+            <div
+              className="color__circle"
+              style={{ backgroundColor: newColor }}
+              onClick={() => document.getElementById("hidden-color-input").click()}
             />
-          </label>
-          <label>
-            Color:
             <input
+              id="hidden-color-input"
               type="color"
               value={newColor}
               onChange={(e) => setNewColor(e.target.value)}
-            />
-          </label>
-          <label>
-            Profile Picture:
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleFileChange}
-            />
-          </label>
-          {previewUrl && (
-            <div className="preview-container">
-              <p>Preview:</p>
-              <img
-                src={previewUrl}
-                alt="Profile Preview"
-                className="preview-image"
-              />
-            </div>
-          )}
+              style={{ display: "none" }}
+            />{" "}
+          </div>
           <button type="submit">Create</button>
         </form>
       </Modal>

@@ -55,17 +55,11 @@ const Overview = () => {
 
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <h2>Add New Campaign</h2>
-        <form className="add-campaign-form" onSubmit={handleSubmit}>
-          <label>
-            Title
-            <input type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} required />
-          </label>
-
-          <label>
-            Link
-            <input type="text" value={newLink} onChange={(e) => setNewLink(e.target.value)} required />
-          </label>
-
+        <form className="campaign__form" onSubmit={handleSubmit}>
+          <div className="form__fields">
+            <input type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} required placeholder="Title" />
+            <input type="text" value={newLink} onChange={(e) => setNewLink(e.target.value)} required placeholder="Google Sheets Link" />
+</div>
           <div className="form-actions">
             <button type="submit">Add</button>
           </div>

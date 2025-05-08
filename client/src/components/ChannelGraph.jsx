@@ -5,7 +5,7 @@ import "../styles/ChannelGraph.css";
 const METRIC_OPTIONS = [
   { key: "impressions", label: "Impressions" },
   { key: "cpm", label: "CPM" },
-  { key: "yearOverYear", label: "Year over Year %" },
+  { key: "yearOverYear", label: "YoY" },
 ];
 
 const DOMAIN_OPTIONS = [
@@ -15,7 +15,6 @@ const DOMAIN_OPTIONS = [
 
 const CURVE_OPTIONS = [
   { key: "linear", label: "Linear" },
-  { key: "basis", label: "Basis" },
   { key: "catmullRom", label: "Smooth" },
 ];
 
@@ -23,7 +22,7 @@ export default function MetricsGraph({ data, color = "#69b3a2" }) {
   const svgRef = useRef();
   const [selectedMetric, setSelectedMetric] = useState(METRIC_OPTIONS[0].key);
   const [selectedDomain, setSelectedDomain] = useState(DOMAIN_OPTIONS[0].key);
-  const [selectedCurve, setSelectedCurve] = useState(CURVE_OPTIONS[2].key);
+  const [selectedCurve, setSelectedCurve] = useState(CURVE_OPTIONS[1].key);
 
   const weeks = Array.isArray(data)
     ? data
@@ -90,9 +89,6 @@ export default function MetricsGraph({ data, color = "#69b3a2" }) {
     switch (selectedCurve) {
       case 'linear':
         curveFn = d3.curveLinear;
-        break;
-      case 'basis':
-        curveFn = d3.curveBasis;
         break;
       case 'catmullRom':
       default:
@@ -334,18 +330,7 @@ export default function MetricsGraph({ data, color = "#69b3a2" }) {
   return (
     <div className="channel__graph__container">
       <div className="controls">
-        <select
-          id="metricSelect"
-          value={selectedMetric}
-          onChange={(e) => setSelectedMetric(e.target.value)}
-        >
-          {METRIC_OPTIONS.map((opt) => (
-            <option key={opt.key} value={opt.key}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
-        <select
+        <select className="channel__select"
           id="domainSelect"
           value={selectedDomain}
           onChange={(e) => setSelectedDomain(e.target.value)}
@@ -356,7 +341,7 @@ export default function MetricsGraph({ data, color = "#69b3a2" }) {
             </option>
           ))}
         </select>
-        <select
+        <select className="channel__select"
           id="curveSelect"
           value={selectedCurve}
           onChange={(e) => setSelectedCurve(e.target.value)}
@@ -366,9 +351,23 @@ export default function MetricsGraph({ data, color = "#69b3a2" }) {
               {opt.label}
             </option>
           ))}
+        </select>      <select className="channel__select"
+          id="metricSelect"
+          value={selectedMetric}
+          onChange={(e) => setSelectedMetric(e.target.value)}
+        >
+          {METRIC_OPTIONS.map((opt) => (
+            <option key={opt.key} value={opt.key}>
+              {opt.label}
+            </option>
+          ))}
         </select>
-        <select id="channelSelect">
+        <select className="channel__select" id="channelSelect">
           <option value="">Youtube TV</option>
+          <option value="">Hulu</option>
+          <option value="">FaceBook</option>
+          <option value="">Wallscape #857</option>
+          <option value="">Bus USKs</option>
         </select>
       </div>
       <svg ref={svgRef} className="metrics__graph" />

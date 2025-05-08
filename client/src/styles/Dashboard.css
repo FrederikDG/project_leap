@@ -26,10 +26,9 @@
   justify-content: flex-start;
   max-width: 60%;
   font-size: 2rem;
-  
 }
 
-.campaign__data{
+.campaign__data {
   max-width: 50rem;
   line-height: 130%;
 }
@@ -55,8 +54,7 @@
   width: 100%;
 }
 
-.addition__text
-{
+.addition__text {
   font-size: 0.8rem;
   color: var(--color-primary);
   font-family: "Neue Machina", sans-serif;
@@ -65,37 +63,36 @@
   text-transform: uppercase;
 }
 
-.project__goal__text{
-    font-size: 1.2rem;
-    color: var(--color-primary);
-    font-family: "Ivy Ora Display", sans-serif;
-    max-width:32rem;
+.project__goal__text {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-family: "Ivy Ora Display", sans-serif;
+  max-width: 32rem;
 }
 
-.flight__info__container{
+.flight__info__container {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-margin:  2rem 0rem;
+  margin: 2rem 0rem;
   width: 100%;
-
 }
 
-.flight__info__container .header__container{
+.flight__info__container .header__container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
 }
 
-.flight__info__container .header__container h4{
+.flight__info__container .header__container h4 {
   font-size: 1.2rem;
   color: var(--color-primary);
   font-family: "Universal Sans 306", sans-serif;
   font-weight: 500;
 }
 
-.flight__info__description{
+.flight__info__description {
   font-size: 2rem;
   color: var(--color-primary);
   font-family: "Universal Sans 306", sans-serif;
@@ -103,23 +100,129 @@ margin:  2rem 0rem;
   line-height: 130%;
 }
 
-.data__container__container{
+.data__container__container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
-.progressbar__container{
+.progressbar__container {
   margin: 1.5rem 0rem;
 }
 
-.progressbar__dates__container{
+.progressbar__dates__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 1rem 0rem;
 }
 
-.progressbar__dates__container p{
+.progressbar__dates__container p {
   font-family: "Universal Sans 460", sans-serif;
+}
+
+.channels__container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 3rem 0rem 0rem;
+  width: 100%;
+}
+
+.channel__info__container {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  font-family: "universal sans 306", sans-serif;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-grey-500);
+  font-weight: 500;
+}
+
+.channel__info__name {
+  grid-column: 1 / 4;
+}
+
+.channel__info__impressions {
+  grid-column: 9 / 11;
+}
+
+.channel__info__cpm {
+  grid-column: 13/15;
+}
+.channel__info__yoy {
+  grid-column: 17/19;
+}
+.channel__info__benchmark {
+  grid-column: 20 /22;
+  text-wrap: nowrap;
+}
+
+.search__data__container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.search__container {
+display: flex;
+
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 1rem;
+}
+
+.keywords__container {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: var(--color-grey-100);
+  padding: 1.5rem;
+  gap: 1.8rem;
+  border-radius: 1rem;
+  border: 1px solid var(--color-grey-200);
+}
+
+.keywords__list{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 0.5rem;
+  width: 100%;
+
+}
+
+.keywords__info__container{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  font-family: "universal sans 306", sans-serif;
+  font-size: 0.8rem;
+  color: var(--color-grey-500);
+  font-weight: 500;
+}
+
+.keywords__info__word {
+  grid-column: 1 / 4;
+}
+.keywords__info__impressions {
+  grid-column: 6 / 8;
+}
+.keywords__info__click {
+  grid-column: 9 / 11;
+}
+.keywords__info__cpc {
+  grid-column: 12 / 13;
 }

@@ -24,13 +24,15 @@ export function CompanyProvider({ children }) {
           profilePicUrl: c.profilePic ? `/uploads/${c.profilePic}` : null
         }));
 
-        setCompanies(withUrls);
-        const ids = withUrls.map(c => c.id);
+        const sortedCompanies = [...withUrls].sort((a, b) => b.id - a.id);
+
+        setCompanies(sortedCompanies);
+        const ids = sortedCompanies.map(c => c.id);
         setOrder(ids);
         if (ids.length) setActiveCompanyId(ids[0]);
 
         const map = {};
-        withUrls.forEach(c => { map[c.id] = c.campaigns || []; });
+        sortedCompanies.forEach(c => { map[c.id] = c.campaigns || []; });
         setCampaignsByCompany(map);
       } catch (err) {
         console.error("Failed to load companies", err);

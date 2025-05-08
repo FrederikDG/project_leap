@@ -22,12 +22,10 @@ const Navigation = ({ onEditClick }) => {
   };
 
   const handleBack = () => {
-    // go back to previous page
     navigate(-1);
   };
 
   const handleSettings = () => {
-    // either call the passed-in handler or navigate somewhere
     if (onEditClick) {
       onEditClick();
     } else {

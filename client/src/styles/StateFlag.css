@@ -9,18 +9,18 @@
     width: fit-content;
 }
 
-.flag__container.campaign{
+.flag__container.state{
     background-color: var(--color-green-500) ;
 }
 
 
-.flag__container.flight{
+.flag__container.count{
     background-color: var(--color-grey-200) ;
 }
 
 .flag__container .icon{
 height: 12px;
-margin-top: -4px;
+margin-top: -3px;
 }
 
 .flag__container p{

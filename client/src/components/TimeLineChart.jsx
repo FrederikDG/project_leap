@@ -157,7 +157,7 @@ export default function TimelineChartD3({ flights, color }) {
 
     // === Bar Labels (date range only) ===
     const TimeLineThreshold = 100; // only bars ≥100px will get a spend label
-    const budgetThreshold = 140; // only bars ≥100px will get a spend label
+    const budgetThreshold = 160; // only bars ≥100px will get a spend label
 
     // Date labels (always shown)
     svg

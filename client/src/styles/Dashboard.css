@@ -1,16 +1,23 @@
 .campaign__title {
   font-size: 5rem;
   font-weight: 500;
-  color: var(--color-primary);
+  color: var(--color-black);
   font-family: "universal sans 306", sans-serif;
   text-align: center;
   margin-bottom: 3rem;
   text-transform: capitalize;
 }
+.flight__title {
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--color-white);
+  font-family: "universal sans 306", sans-serif;
+  text-align: center;
+  text-transform: capitalize;
+}
 
 .campaign__overview__header {
   font-size: 1.5rem;
-  color: var(--color-primary);
   font-family: "universal sans 306", sans-serif;
   margin-bottom: 2rem;
   display: flex;
@@ -172,7 +179,7 @@
 }
 
 .search__container {
-display: flex;
+  display: flex;
 
   align-items: stretch;
   justify-content: stretch;
@@ -192,17 +199,16 @@ display: flex;
   border: 1px solid var(--color-grey-200);
 }
 
-.keywords__list{
+.keywords__list {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: stretch;
   gap: 0.5rem;
   width: 100%;
-
 }
 
-.keywords__info__container{
+.keywords__info__container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
@@ -225,4 +231,11 @@ display: flex;
 }
 .keywords__info__cpc {
   grid-column: 12 / 13;
+}
+
+.flight__accordion__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem 6rem;
 }

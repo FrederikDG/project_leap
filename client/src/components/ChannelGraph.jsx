@@ -18,7 +18,7 @@ const CURVE_OPTIONS = [
   { key: "catmullRom", label: "Smooth" },
 ];
 
-export default function MetricsGraph({ data, color = "#69b3a2" }) {
+export default function MetricsGraph({ data, color }) {
   const svgRef = useRef();
   const [selectedMetric, setSelectedMetric] = useState(METRIC_OPTIONS[0].key);
   const [selectedDomain, setSelectedDomain] = useState(DOMAIN_OPTIONS[0].key);

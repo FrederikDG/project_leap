@@ -57,15 +57,15 @@ const ChannelContainer = ({
         </div>
         <p className="channel__cpm">{CPM}</p>
         <p className="channel__yoy">{YoY}</p>
-        <p className="channel__benchmark">{Benchmark}</p>
+        <p className="channel__benchmark">{Benchmark ? Benchmark : '-'}</p>
         <button className="channel__button" onClick={handleToggle}>
           {isOpen ? "Close" : "Expand"}
         </button>
       </div>
 
       <div className="channel__data__container">
-        <DataContainer title="working media" data={formatNumber(budget)} />
-        <DataContainer title="total spent so far" data={formatNumber(spent)} />
+        <DataContainer title="working media" data={`$${formatNumber(budget)}`} />
+        <DataContainer title="total spent so far" data={`$${formatNumber(spent)}`}/>
         <DataContainer title="percentage spent" data={`${percentageSpent}%`} />
         <DataContainer title="launch date" data={startDate}/>
         <DataContainer title="end date" data={endDate} />

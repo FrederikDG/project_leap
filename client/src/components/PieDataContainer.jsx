@@ -3,7 +3,8 @@ import React from "react";
 import "../styles/PieDataContainer.css";
 
 const PieDataContainer = ({ data, sliceColors }) => {
-  const totalBudget = data.reduce((sum, item) => sum + item.budget, 0); // Calculate total budget
+  const totalBudget = data.reduce((sum, item) => sum + item.budget, 0);
+
   return (
     <div className="pie__container">
       {data.map((item, index) => (
@@ -14,7 +15,7 @@ const PieDataContainer = ({ data, sliceColors }) => {
                 width: "20px",
                 height: "20px",
                 borderRadius: "50%",
-                backgroundColor: sliceColors[index],  // use the matching slice color
+                backgroundColor: sliceColors[index], // use the matching slice color
               }}
             />
             <h4>{item.name}</h4>

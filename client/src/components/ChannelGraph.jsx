@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useId  } from "react";
+import React, { useRef, useEffect, useState, useId } from "react";
 import * as d3 from "d3";
 import "../styles/ChannelGraph.css";
 
@@ -18,18 +18,16 @@ const CURVE_OPTIONS = [
   { key: "catmullRom", label: "Smooth" },
 ];
 
-export default function MetricsGraph({ data, color }) {
+export default function MetricsGraph({ channels, data, color }) {
   const uniqueId = useId();
   const svgRef = useRef();
   const [selectedMetric, setSelectedMetric] = useState(METRIC_OPTIONS[0].key);
   const [selectedDomain, setSelectedDomain] = useState(DOMAIN_OPTIONS[0].key);
   const [selectedCurve, setSelectedCurve] = useState(CURVE_OPTIONS[1].key);
+  const [selectedChannelIndex, setSelectedChannelIndex] = useState(0);
 
-  const weeks = Array.isArray(data)
-    ? data
-    : Array.isArray(data.weeks)
-    ? data.weeks
-    : [];
+  const selectedChannelData = channels?.[selectedChannelIndex]?.data || [];
+  const weeks = Array.isArray(data) ? data : Array.isArray(data.weeks) ? data.weeks : [];
 
   useEffect(() => {
     if (!weeks.length) return;
@@ -48,13 +46,14 @@ export default function MetricsGraph({ data, color }) {
     // formatter for Y-axis ticks and hover flag
     const formatY = (d) => {
       const base = d >= 1000 ? `${d / 1000}k` : d;
-      if (selectedMetric === 'cpm') return `$${base}`;
-      if (selectedMetric === 'yearOverYear') return `${base}%`;
+      if (selectedMetric === "cpm") return `$${base}`;
+      if (selectedMetric === "yearOverYear") return `${base}%`;
       return base;
     };
 
     // X scale
-    const xScale = d3.scaleTime()
+    const xScale = d3
+      .scaleTime()
       .domain(d3.extent(points, (d) => d.week))
       .range([margin.left, width - margin.right]);
 
@@ -75,12 +74,10 @@ export default function MetricsGraph({ data, color }) {
     ];
 
     // Choose Y domain based on dropdown
-    const yDomain =
-    selectedDomain === 'zeroToMax'
-      ? [0, rawMax + tickSpacing]
-      : extendedDomain;
+    const yDomain = selectedDomain === "zeroToMax" ? [0, rawMax + tickSpacing] : extendedDomain;
     // Y scale
-    const yScale = d3.scaleLinear()
+    const yScale = d3
+      .scaleLinear()
       .domain(yDomain)
       .nice()
       .range([height - margin.bottom, margin.top]);
@@ -88,20 +85,22 @@ export default function MetricsGraph({ data, color }) {
     // Choose curve function
     let curveFn;
     switch (selectedCurve) {
-      case 'linear':
+      case "linear":
         curveFn = d3.curveLinear;
         break;
-      case 'catmullRom':
+      case "catmullRom":
       default:
         curveFn = d3.curveCatmullRom;
     }
 
-    const line = d3.line()
+    const line = d3
+      .line()
       .curve(curveFn)
       .x((d) => xScale(d.week))
       .y((d) => yScale(d.value));
 
-    const area = d3.area()
+    const area = d3
+      .area()
       .curve(curveFn)
       .x((d) => xScale(d.week))
       .y0(height - margin.bottom)
@@ -114,95 +113,92 @@ export default function MetricsGraph({ data, color }) {
 
     // defs: gradient + shadow
     const defs = svg.append("defs");
-defs.append("linearGradient")
-  .attr("id", `area-gradient-${uniqueId}`)
-      .attr("x1", 0).attr("x2", 0)
-      .attr("y1", 0).attr("y2", 1)
+    defs
+      .append("linearGradient")
+      .attr("id", `area-gradient-${uniqueId}`)
+      .attr("x1", 0)
+      .attr("x2", 0)
+      .attr("y1", 0)
+      .attr("y2", 1)
       .selectAll("stop")
       .data([
         { offset: "0%", opacity: 0.4 },
         { offset: "100%", opacity: 0 },
       ])
-      .enter().append("stop")
+      .enter()
+      .append("stop")
       .attr("offset", (d) => d.offset)
       .attr("stop-color", color)
       .attr("stop-opacity", (d) => d.opacity);
 
-    const shadowFilter = defs.append("filter")
+    const shadowFilter = defs
+      .append("filter")
       .attr("id", "box-shadow")
-      .attr("x", "-50%").attr("y", "-50%")
-      .attr("width", "200%").attr("height", "200%");
-    shadowFilter.append("feDropShadow")
-      .attr("dx", 0).attr("dy", 0)
-      .attr("stdDeviation", 2)
-      .attr("flood-color", "#000")
-      .attr("flood-opacity", 0.2);
+      .attr("x", "-50%")
+      .attr("y", "-50%")
+      .attr("width", "200%")
+      .attr("height", "200%");
+    shadowFilter.append("feDropShadow").attr("dx", 0).attr("dy", 0).attr("stdDeviation", 2).attr("flood-color", "#000").attr("flood-opacity", 0.2);
 
     // X axis
-    svg.append("g")
+    svg
+      .append("g")
       .attr("transform", `translate(0,${height - margin.bottom + 5})`)
       .call((g) =>
-        g.call(d3.axisBottom(xScale)
-          .ticks(weeks.length)
-          .tickFormat(d3.timeFormat("%-m/%-d"))
-          .tickSize(0)
-        )
-        .call((g) => g.selectAll(".domain").remove())
-        .call((g) => g.selectAll("text")
-          .style("font-family", "'Universal Sans 460', sans-serif")
-          .style("font-size", "8px")
-          .style("fill", "#3d3c3f")
-          .style("text-anchor", (d, i) =>
-            i === 0 ? "start" : i === weeks.length - 1 ? "end" : "middle"
+        g
+          .call(d3.axisBottom(xScale).ticks(weeks.length).tickFormat(d3.timeFormat("%-m/%-d")).tickSize(0))
+          .call((g) => g.selectAll(".domain").remove())
+          .call((g) =>
+            g
+              .selectAll("text")
+              .style("font-family", "'Universal Sans 460', sans-serif")
+              .style("font-size", "8px")
+              .style("fill", "#3d3c3f")
+              .style("text-anchor", (d, i) => (i === 0 ? "start" : i === weeks.length - 1 ? "end" : "middle"))
           )
-        )
       );
 
     // Y axis + grid
-    svg.append("g")
+    svg
+      .append("g")
       .attr("transform", `translate(${margin.left - 4},0)`)
       .call((g) =>
-        g.call(d3.axisLeft(yScale)
-          .ticks(tickCount)
-          .tickSize(0)
-          .tickFormat(formatY)
-        )
-        .call((g) => g.selectAll(".domain").remove())
-        .call((g) => g.selectAll("text")
-          .style("font-family", "'Universal Sans 460', sans-serif")
-          .style("font-size", "8px")
-          .style("fill", "#3d3c3f")
-        )
+        g
+          .call(d3.axisLeft(yScale).ticks(tickCount).tickSize(0).tickFormat(formatY))
+          .call((g) => g.selectAll(".domain").remove())
+          .call((g) =>
+            g.selectAll("text").style("font-family", "'Universal Sans 460', sans-serif").style("font-size", "8px").style("fill", "#3d3c3f")
+          )
       );
 
-    svg.append("g")
+    svg
+      .append("g")
       .attr("class", "grid")
       .attr("transform", `translate(${margin.left},0)`)
       .call((g) =>
-        g.call(d3.axisLeft(yScale)
-          .ticks(tickCount)
-          .tickSize(-(width - margin.left - margin.right))
-          .tickFormat("")
-        )
-        .call((g) => g.selectAll(".domain").remove())
+        g
+          .call(
+            d3
+              .axisLeft(yScale)
+              .ticks(tickCount)
+              .tickSize(-(width - margin.left - margin.right))
+              .tickFormat("")
+          )
+          .call((g) => g.selectAll(".domain").remove())
       )
       .selectAll("line")
       .style("stroke", "#dfdfdf");
 
     // plot area + line + endpoints
-svg.append("path").datum(points)
-  .attr("fill", `url(#area-gradient-${uniqueId})`)
-  .attr("d", area);
+    svg.append("path").datum(points).attr("fill", `url(#area-gradient-${uniqueId})`).attr("d", area);
 
-    svg.append("path").datum(points)
-      .attr("fill", "none")
-      .attr("stroke", color)
-      .attr("stroke-width", 2)
-      .attr("d", line);
+    svg.append("path").datum(points).attr("fill", "none").attr("stroke", color).attr("stroke-width", 2).attr("d", line);
 
-    svg.selectAll(".endpoint")
+    svg
+      .selectAll(".endpoint")
       .data([points[0], points[points.length - 1]])
-      .enter().append("circle")
+      .enter()
+      .append("circle")
       .attr("class", "endpoint")
       .attr("cx", (d) => xScale(d.week))
       .attr("cy", (d) => yScale(d.value))
@@ -211,36 +207,24 @@ svg.append("path").datum(points)
 
     // Hover interactivity continues unchanged...
     const bisectDate = d3.bisector((d) => d.week).left;
-    const focus = svg.append("g")
-      .attr("class", "focus")
-      .style("display", "none");
+    const focus = svg.append("g").attr("class", "focus").style("display", "none");
 
-    focus.append("line")
+    focus
+      .append("line")
       .attr("class", "hover-line")
       .attr("y1", margin.top - 30)
       .attr("y2", height - margin.bottom)
       .attr("stroke", color)
       .attr("stroke-width", 1);
 
-    focus.append("circle")
-      .attr("class", "hover-circle-bg")
-      .attr("r", 5)
-      .attr("fill", "white")
-      .attr("filter", "url(#box-shadow)");
+    focus.append("circle").attr("class", "hover-circle-bg").attr("r", 5).attr("fill", "white").attr("filter", "url(#box-shadow)");
 
-    focus.append("circle")
-      .attr("class", "hover-circle")
-      .attr("r", 3)
-      .attr("fill", color);
+    focus.append("circle").attr("class", "hover-circle").attr("r", 3).attr("fill", color);
 
-    focus.append("path")
-      .attr("class", "hover-flag")
-      .attr("fill", color)
-      .attr("fill-opacity", 0.2)
-      .attr("stroke", color)
-      .attr("stroke-width", 1);
+    focus.append("path").attr("class", "hover-flag").attr("fill", color).attr("fill-opacity", 0.2).attr("stroke", color).attr("stroke-width", 1);
 
-    focus.append("text")
+    focus
+      .append("text")
       .attr("class", "hover-flag-text")
       .attr("alignment-baseline", "middle")
       .style("font-family", "'Universal Sans 460', sans-serif")
@@ -248,7 +232,8 @@ svg.append("path").datum(points)
       .style("font-weight", 400)
       .attr("fill", color);
 
-    svg.append("rect")
+    svg
+      .append("rect")
       .attr("class", "overlay")
       .attr("x", margin.left)
       .attr("y", margin.top)
@@ -258,7 +243,7 @@ svg.append("path").datum(points)
       .attr("pointer-events", "all")
       .on("mouseover", () => focus.style("display", null))
       .on("mouseout", () => focus.style("display", "none"))
-      .on("mousemove", function(event) {
+      .on("mousemove", function (event) {
         const [mx] = d3.pointer(event, this);
         const x0 = xScale.invert(mx);
         const i = bisectDate(points, x0, 1);
@@ -268,27 +253,18 @@ svg.append("path").datum(points)
         const xPos = xScale(d.week);
         const yPos = yScale(d.value);
 
-        focus.select(".hover-line")
-          .attr("x1", xPos).attr("x2", xPos);
-        focus.select(".hover-circle-bg")
-          .attr("cx", xPos).attr("cy", yPos);
-        focus.select(".hover-circle")
-          .attr("cx", xPos).attr("cy", yPos);
+        focus.select(".hover-line").attr("x1", xPos).attr("x2", xPos);
+        focus.select(".hover-circle-bg").attr("cx", xPos).attr("cy", yPos);
+        focus.select(".hover-circle").attr("cx", xPos).attr("cy", yPos);
 
         // formatting hover flag value
         const rawVal = d.value.toLocaleString();
-        const valText =
-          selectedMetric === 'cpm'
-            ? `$${rawVal}`
-            : selectedMetric === 'yearOverYear'
-            ? `${rawVal}%`
-            : rawVal;
+        const valText = selectedMetric === "cpm" ? `$${rawVal}` : selectedMetric === "yearOverYear" ? `${rawVal}%` : rawVal;
 
-        const txt = focus.select(".hover-flag-text")
-          .text(valText)
-          .attr("x", -9999).attr("y", -9999);
+        const txt = focus.select(".hover-flag-text").text(valText).attr("x", -9999).attr("y", -9999);
         const bbox = txt.node().getBBox();
-        const padX = 6, padY = 4;
+        const padX = 6,
+          padY = 4;
         const flagW = bbox.width + padX * 2;
         const flagH = bbox.height + padY * 2;
         const r = 5;
@@ -300,75 +276,67 @@ svg.append("path").datum(points)
         const fy = margin.top - 30;
         let pathD;
         if (isLast) {
-            pathD = [
+          pathD = [
             `M${fx},${fy}`,
             `h-${flagW - r}`,
             `a${r},${r} 0 0 0 -${r},${r}`,
-            `v${flagH - 2*r}`,
+            `v${flagH - 2 * r}`,
             `a${r},${r} 0 0 0 ${r},${r}`,
             `h${flagW - r}`,
-            `Z`
-            ].join(" ");
+            `Z`,
+          ].join(" ");
         } else {
           pathD = [
             `M${fx},${fy}`,
             `h${flagW - r}`,
             `a${r},${r} 0 0 1 ${r},${r}`,
-            `v${flagH - 2*r}`,
+            `v${flagH - 2 * r}`,
             `a${r},${r} 0 0 1 -${r},${r}`,
             `h-${flagW - r}`,
-            `Z`
+            `Z`,
           ].join(" ");
         }
         focus.select(".hover-flag").attr("d", pathD);
 
-        txt
-          .attr("x", isLast ? fx - padX : fx + padX)
-          .attr("y", fy + padY + bbox.height / 2 + 1);
+        txt.attr("x", isLast ? fx - padX : fx + padX).attr("y", fy + padY + bbox.height / 2 + 1);
       });
   }, [weeks, color, selectedMetric, selectedDomain, selectedCurve]);
 
   return (
     <div className="channel__graph__container">
       <div className="controls">
-        <select className="channel__select"
-          id="domainSelect"
-          value={selectedDomain}
-          onChange={(e) => setSelectedDomain(e.target.value)}
-        >
+        <select className="channel__select" id="domainSelect" value={selectedDomain} onChange={(e) => setSelectedDomain(e.target.value)}>
           {DOMAIN_OPTIONS.map((opt) => (
             <option key={opt.key} value={opt.key}>
               {opt.label}
             </option>
           ))}
         </select>
-        <select className="channel__select"
-          id="curveSelect"
-          value={selectedCurve}
-          onChange={(e) => setSelectedCurve(e.target.value)}
-        >
+        <select className="channel__select" id="curveSelect" value={selectedCurve} onChange={(e) => setSelectedCurve(e.target.value)}>
           {CURVE_OPTIONS.map((opt) => (
             <option key={opt.key} value={opt.key}>
               {opt.label}
             </option>
           ))}
-        </select>      <select className="channel__select"
-          id="metricSelect"
-          value={selectedMetric}
-          onChange={(e) => setSelectedMetric(e.target.value)}
-        >
+        </select>{" "}
+        <select className="channel__select" id="metricSelect" value={selectedMetric} onChange={(e) => setSelectedMetric(e.target.value)}>
           {METRIC_OPTIONS.map((opt) => (
             <option key={opt.key} value={opt.key}>
               {opt.label}
             </option>
           ))}
         </select>
-        <select className="channel__select" id="channelSelect">
-          <option value="">Youtube TV</option>
-          <option value="">Hulu</option>
-          <option value="">FaceBook</option>
-          <option value="">Wallscape #857</option>
-          <option value="">Bus USKs</option>
+        <select
+          className="channel__select"
+          id="channelSelect"
+          value={selectedChannelIndex}
+          onChange={(e) => setSelectedChannelIndex(Number(e.target.value))}
+        >
+          {channels.map((ch, i) => (
+            <option key={ch.name} value={i}>
+              {ch.name}
+            </option>
+          ))}
         </select>
       </div>
       <svg ref={svgRef} className="metrics__graph" />

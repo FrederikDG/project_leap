@@ -18,6 +18,7 @@
       "searchImpressionShare": 0.43,
       "CTR": 0.11,
       "CPC": 0.1,
+      "clicks": 45432,
       "keywords": [
         {
           "id": 0,
@@ -52,20 +53,6 @@
           "name": "online sms service",
           "impressions": 1192386,
           "clicks": 7270,
-          "CPC": 0.11
-        },
-        {
-          "id": 5,
-          "name": "wireless licensing",
-          "impressions": 1037182,
-          "clicks": 9320,
-          "CPC": 0.09
-        },
-        {
-          "id": 6,
-          "name": "spectrum allocation",
-          "impressions": 1201943,
-          "clicks": 10903,
           "CPC": 0.11
         }
       ],
@@ -249,6 +236,7 @@
       "searchImpressionShare": 0.42,
       "CTR": 0.11,
       "CPC": 0.1,
+      "clicks": 45432,
       "keywords": [
         {
           "id": 0,
@@ -284,20 +272,6 @@
           "impressions": 1214683,
           "clicks": 8738,
           "CPC": 0.12
-        },
-        {
-          "id": 5,
-          "name": "wireless licensing",
-          "impressions": 983643,
-          "clicks": 11272,
-          "CPC": 0.1
-        },
-        {
-          "id": 6,
-          "name": "spectrum allocation",
-          "impressions": 989627,
-          "clicks": 13076,
-          "CPC": 0.1
         }
       ],
       "channels": [
@@ -363,7 +337,7 @@
           "logoLink": "https://goodly.co.in/wp-content/uploads/2023/10/youtube-logo-png-46016-1.png",
           "budget": 494931,
           "spent": 299759,
-          "startDate": "2025-03-01",
+          "startDate": "2025-04-01",
           "endDate": "2025-05-10",
           "metrics": [
             {
@@ -480,55 +454,42 @@
       "searchImpressionShare": 0,
       "CTR": 0,
       "CPC": 0,
+      "clicks": 0,
       "keywords": [
         {
           "id": 0,
           "name": "sms text messaging",
-          "impressions": 917877,
-          "clicks": 12416,
-          "CPC": 0.12
+          "impressions": 0,
+          "clicks": 0,
+          "CPC": 0
         },
         {
           "id": 1,
           "name": "find a short code",
-          "impressions": 989136,
-          "clicks": 8602,
-          "CPC": 0.1
+          "impressions": 0,
+          "clicks": 0,
+          "CPC": 0
         },
         {
           "id": 2,
           "name": "send sms",
-          "impressions": 1031434,
-          "clicks": 13915,
-          "CPC": 0.1
+          "impressions": 0,
+          "clicks": 0,
+          "CPC": 0
         },
         {
           "id": 3,
           "name": "sms online",
-          "impressions": 977484,
-          "clicks": 8654,
-          "CPC": 0.11
+          "impressions": 0,
+          "clicks": 0,
+          "CPC": 0
         },
         {
           "id": 4,
           "name": "online sms service",
-          "impressions": 836611,
-          "clicks": 11550,
-          "CPC": 0.09
-        },
-        {
-          "id": 5,
-          "name": "wireless licensing",
-          "impressions": 1039628,
-          "clicks": 13644,
-          "CPC": 0.1
-        },
-        {
-          "id": 6,
-          "name": "spectrum allocation",
-          "impressions": 899291,
-          "clicks": 7900,
-          "CPC": 0.11
+          "impressions": 0,
+          "clicks": 0,
+          "CPC": 0
         }
       ],
       "channels": [
@@ -537,7 +498,7 @@
           "name": "Reddit",
           "logoLink": "https://static-00.iconduck.com/assets.00/reddit-icon-256x256-7e3aoes6.png",
           "budget": 513884,
-          "spent": 496598,
+          "spent": 0,
           "startDate": "2025-04-15",
           "endDate": "2025-05-20",
           "metrics": [
@@ -545,46 +506,46 @@
               "id": 0,
               "weekStartDate": "2025-04-15",
               "weekEndDate": "2025-04-21",
-              "CPM": 0.55,
-              "YOY": 0.11,
-              "impressions": 180581090,
-              "benchmark": "0.55 vs 0.22"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             },
             {
               "id": 1,
               "weekStartDate": "2025-04-22",
               "weekEndDate": "2025-04-28",
-              "CPM": 0.52,
-              "YOY": 0.11,
-              "impressions": 190999230,
-              "benchmark": "0.52 vs 0.23"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             },
             {
               "id": 2,
               "weekStartDate": "2025-04-29",
               "weekEndDate": "2025-05-05",
-              "CPM": 0.52,
-              "YOY": 0.1,
-              "impressions": 190999230,
-              "benchmark": "0.52 vs 0.25"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             },
             {
               "id": 3,
               "weekStartDate": "2025-05-06",
               "weekEndDate": "2025-05-12",
-              "CPM": 0.59,
-              "YOY": 0.08,
-              "impressions": 168338305,
-              "benchmark": "0.59 vs 0.22"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             },
             {
               "id": 4,
               "weekStartDate": "2025-05-13",
               "weekEndDate": "2025-05-19",
-              "CPM": 0.53,
-              "YOY": 0.11,
-              "impressions": 187395471,
-              "benchmark": "0.53 vs 0.23"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             }
           ]
         },
@@ -593,7 +554,7 @@
           "name": "Snapchat",
           "logoLink": "https://static-00.iconduck.com/assets.00/snapchat-icon-2048x2048-nmcy60kt.png",
           "budget": 504948,
-          "spent": 382170,
+          "spent": 0,
           "startDate": "2025-04-15",
           "endDate": "2025-05-20",
           "metrics": [
@@ -601,46 +562,46 @@
               "id": 0,
               "weekStartDate": "2025-04-15",
               "weekEndDate": "2025-04-21",
-              "CPM": 0.49,
-              "YOY": 0.07,
-              "impressions": 155987755,
-              "benchmark": "0.49 vs 0.2"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             },
             {
               "id": 1,
               "weekStartDate": "2025-04-22",
               "weekEndDate": "2025-04-28",
-              "CPM": 0.6,
-              "YOY": 0.1,
-              "impressions": 127390000,
-              "benchmark": "0.6 vs 0.21"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             },
             {
               "id": 2,
               "weekStartDate": "2025-04-29",
               "weekEndDate": "2025-05-05",
-              "CPM": 0.58,
-              "YOY": 0.13,
-              "impressions": 131782758,
-              "benchmark": "0.58 vs 0.24"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             },
             {
               "id": 3,
               "weekStartDate": "2025-05-06",
               "weekEndDate": "2025-05-12",
-              "CPM": 0.6,
-              "YOY": 0.09,
-              "impressions": 127390000,
-              "benchmark": "0.6 vs 0.25"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             },
             {
               "id": 4,
               "weekStartDate": "2025-05-13",
               "weekEndDate": "2025-05-19",
-              "CPM": 0.57,
-              "YOY": 0.13,
-              "impressions": 134094736,
-              "benchmark": "0.57 vs 0.19"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             }
           ]
         },
@@ -649,7 +610,7 @@
           "name": "TikTok",
           "logoLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTIfZPUYMPNWkrvbo2zwrzaC_63VcVS_oDzQ&s",
           "budget": 513618,
-          "spent": 425758,
+          "spent": 0,
           "startDate": "2025-04-15",
           "endDate": "2025-05-20",
           "metrics": [
@@ -657,46 +618,46 @@
               "id": 0,
               "weekStartDate": "2025-04-15",
               "weekEndDate": "2025-04-21",
-              "CPM": 0.52,
-              "YOY": 0.11,
-              "impressions": 163753076,
-              "benchmark": "0.52 vs 0.23"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             },
             {
               "id": 1,
               "weekStartDate": "2025-04-22",
               "weekEndDate": "2025-04-28",
-              "CPM": 0.54,
-              "YOY": 0.08,
-              "impressions": 157688148,
-              "benchmark": "0.54 vs 0.24"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             },
             {
               "id": 2,
               "weekStartDate": "2025-04-29",
               "weekEndDate": "2025-05-05",
-              "CPM": 0.56,
-              "YOY": 0.09,
-              "impressions": 152056428,
-              "benchmark": "0.56 vs 0.22"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             },
             {
               "id": 3,
               "weekStartDate": "2025-05-06",
               "weekEndDate": "2025-05-12",
-              "CPM": 0.59,
-              "YOY": 0.13,
-              "impressions": 144324745,
-              "benchmark": "0.59 vs 0.21"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             },
             {
               "id": 4,
               "weekStartDate": "2025-05-13",
               "weekEndDate": "2025-05-19",
-              "CPM": 0.53,
-              "YOY": 0.12,
-              "impressions": 160663396,
-              "benchmark": "0.53 vs 0.19"
+              "CPM": 0,
+              "YOY": 0,
+              "impressions": 0,
+              "benchmark": ""
             }
           ]
         }

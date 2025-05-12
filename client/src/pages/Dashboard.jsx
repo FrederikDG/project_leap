@@ -110,7 +110,7 @@ export default function Dashboard() {
           flightState = "inactive";
         }
         const percentageSpent = ((flight.spent / flight.budget) * 100).toFixed(2);
-        const flightDuration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)); // Calculate flight duration in days
+        const flightDuration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
 
         return (
           <div key={index} className="campaign__flight" style={{ borderColor: flightColor }}>
@@ -118,7 +118,7 @@ export default function Dashboard() {
               <h3 className="flight__title">
                 Flight {index + 1}: <span style={{ color: flightColor }}>{flightState}</span>
               </h3>
-              <Button image="/BUTTON_DROPDOWN_BIG.svg" onClick={() => toggleFlight(index)} />
+              <Button image="/BUTTON_DROPDOWN_BIG.svg" onClick={() => toggleFlight(index)} transition={true} rotation={isActive ? 0 : 180} />
             </div>
             {expandedFlights.includes(index) ? (
               <>
@@ -143,9 +143,9 @@ export default function Dashboard() {
                     ) : (
                       <p className="flight__info__description">
                         This flight is scheduled to start in{" "}
-                        <strong style={{ color: flightColor }}>${Math.ceil((startDate - currentDate) / (1000 * 60 * 60 * 24))} days</strong> and will
+                        <strong style={{ color: flightColor }}>{Math.ceil((startDate - currentDate) / (1000 * 60 * 60 * 24))} days</strong> and will
                         run for
-                        <strong style={{ color: flightColor }}> ${flightDuration}</strong> days. Are you ready? 🚀
+                        <strong style={{ color: flightColor }}> {flightDuration}</strong> days. Are you ready? 🚀
                       </p>
                     )}
                   </div>
@@ -198,6 +198,7 @@ export default function Dashboard() {
                   </div>
                   <ChannelGraph
                     className="channel__graph"
+                    channels={flight.channels}
                     data={{
                       weeks: [
                         { week: "2025-03-23", metrics: { impressions: 61425, cpm: 1.6, yearOverYear: 5.8 } },
@@ -267,18 +268,31 @@ export default function Dashboard() {
                           <p className="keywords__info__click">Clicks</p>
                           <p className="keywords__info__cpc">CPC</p>
                         </div>
-                        <KeywordContainer keyword="licensed spectrum" impressions="1,234,567" click="47557" cpc="$1.23" />
-                        <KeywordContainer keyword="spectrum auction" impressions="1,234,567" click="47557" cpc="$1.23" />
-                        <KeywordContainer keyword="spectrum policy" impressions="1,234,567" click="47557" cpc="$1.23" />
-                        <KeywordContainer keyword="spectrum allocation" impressions="1,234,567" click="47557" cpc="$1.23" />
-                        <KeywordContainer keyword="spectrum management" impressions="1,234,567" click="47557" cpc="$1.23" />
+                        {flight.keywords?.map((keyword) => {
+                          return (
+                            <KeywordContainer
+                              key={keyword.name}
+                              keyword={keyword.name}
+                              impressions={keyword.impressions}
+                              click={keyword.clicks}
+                              cpc={keyword.CPC}
+                            />
+                          );
+                        })}
                       </div>
                     </div>
                     <div className="search__data__container">
-                      <DataContainer title="search impression share" data="36%" />
-                      <DataContainer title="CTR" data="5.65%" />
-                      <DataContainer title="CPC" data="$1.76" />
-                      <DataContainer title="total clicks" data="47557" />
+                      <DataContainer
+                        title="search impression share"
+                        data={
+                          typeof flight.searchImpressionShare === "number"
+                            ? `${(flight.searchImpressionShare * 100).toFixed(0)}%`
+                            : flight.searchImpressionShare
+                        }
+                      />
+                      <DataContainer title="CTR" data={typeof flight.CTR === "number" ? `${(flight.CTR * 100).toFixed(2)}%` : "5.65%"} />
+                      <DataContainer title="CPC" data={`$${flight.CPC}`} />
+                      <DataContainer title="total clicks" data={flight.clicks.toLocaleString()} />
                     </div>
                   </div>
                 </div>
@@ -288,20 +302,14 @@ export default function Dashboard() {
                       <img src="/MEDIA_ICON.svg" alt="OVERVIEW_ICON" />
                       <h4>Media Plan</h4>
                     </div>
-                    <p className="flight__info__description">
-                      Licensed Spectrum is an awareness-focused campaign with a heavily digital strategy and targeted DC OOH placements.
-                    </p>
+                    <p className="flight__info__description">{mediaPlan ? `${mediaPlan}.` : "No media plan has been provided for this campaign."}</p>
                   </div>
                   <PieChart
                     className="pie__chart"
-                    data={[
-                      { name: "Facebook", budget: 123456 },
-                      { name: "Hulu", budget: 234567 },
-                      { name: "Youtube TV", budget: 345678 },
-                      { name: "Wallscape #857", budget: 456789 },
-                      { name: "Bus USKs", budget: 567890 },
-                    ]}
-                    color={flightColor}
+                    channels={flight.channels}
+                    color={companyColor}
+                    chartId={`pie-chart-${index}`}
+                    flightState={flightState}
                   />
                 </div>
               </>

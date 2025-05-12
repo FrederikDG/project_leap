@@ -1,35 +1,43 @@
-// PieChart.jsx
+
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import PieDataContainer from "./PieDataContainer";
 import "../styles/PieChart.css";
 
-const PieChart = ({ data, color }) => {
+const PieChart = ({ channels, color, flightState }) => {
   const svgRef = useRef(null);
 
-  // 1) Compute the same scale & slice colors up front:
-  const budgets = data.map((d) => d.budget);
+  
+  const budgets = channels.map((d) => d.budget);
   const [minB, maxB] = [d3.min(budgets), d3.max(budgets)];
-  const base = d3.hsl(color);
+  let base = "";
+  let adjustedColor = color;
+  if (flightState !== "active") {
+    base = d3.hsl("#808080");
+    adjustedColor="#808080";
+  } else {
+    base = d3.hsl(color);
+  }
+
   const offset = 0.3;
   const light = Math.min(base.l + offset, 1);
   const dark = Math.max(base.l - offset, 0);
   const lightness = d3.scaleLinear().domain([minB, maxB]).range([light, dark]);
 
   const pieGen = d3.pie().value((d) => d.budget);
-  const slices = pieGen(data);
+  const slices = pieGen(channels);
   const sliceColors = slices.map((d) => d3.hsl(base.h, base.s, lightness(d.data.budget)).toString());
 
   useEffect(() => {
-    const padding = 80; // Add enough space for the tooltip
+    const padding = 80; 
     const width = 600 + padding * 2;
     const height = width;
-    const radius = 600 / 2; // Keep radius based on original chart size
+    const radius = 600 / 2; 
 
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
 
-    const total = d3.sum(data, (d) => d.budget);
+    const total = d3.sum(channels, (d) => d.budget);
     const formatter = d3.format(",");
 
     const g = svg
@@ -60,12 +68,12 @@ const PieChart = ({ data, color }) => {
         const [x, y] = d3.pointer(event, svg.node());
         const tooltipBBox = tooltipRect.node().getBBox();
         const tooltipX = x - radius - tooltipBBox.width;
-        const tooltipY = y - radius - tooltipBBox.height-50; // Add some padding above the tooltip
+        const tooltipY = y - radius - tooltipBBox.height-50; 
         tooltipG.attr("transform", `translate(${tooltipX}, ${tooltipY})`);
-        svg.style("cursor", "none"); // Hide cursor when tooltip is visible
+        svg.style("cursor", "none"); 
             })
             .on("mouseout", () => {
-        svg.style("cursor", null); // Restore cursor when tooltip is hidden
+        svg.style("cursor", null); 
         tooltipG.style("display", "none");
       });
 
@@ -87,11 +95,11 @@ const PieChart = ({ data, color }) => {
       .attr("x", 10)
       .attr("y", 38);
 
-    // Create tooltip rect *after* text so it appears behind
+    
     const tooltipRect = tooltipG
       .insert("rect", ":first-child")
-      .attr("fill", color)
-      .attr("stroke", color)
+      .attr("fill", adjustedColor)
+      .attr("stroke", adjustedColor)
       .attr("stroke-width", 1)
       .attr("rx", 6)
       .attr("ry", 6);
@@ -127,14 +135,14 @@ const PieChart = ({ data, color }) => {
       .style("font-size", "40px")
       .attr("dy", "20px")
       .text(`$${formatter(total)}`);
-  }, [data, sliceColors.join(",")]);
+  }, [channels, sliceColors.join(",")]);
 
   return (
     <div className="pie__chart__container">
       <div className="pie__chart" style={{ position: "relative" }}>
         <svg ref={svgRef} />
       </div>
-      <PieDataContainer data={data} sliceColors={sliceColors} />
+      <PieDataContainer data={channels} sliceColors={sliceColors} />
     </div>
   );
 };

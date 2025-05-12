@@ -33,7 +33,7 @@ export default function Dashboard() {
           const endDate = new Date(flight.endDate);
           return currentDate >= startDate && currentDate <= endDate ? idx : null;
         })
-        .filter(idx => idx !== null);
+        .filter((idx) => idx !== null);
       setExpandedFlights(activeIndexes);
     }
   }, [campaignData]);
@@ -53,7 +53,7 @@ export default function Dashboard() {
     return <div>Loading...</div>;
   }
 
-  const { name, budget, flights, goal, channels, searchKeywords, mediaPlan } = campaignData;
+  const { name, budget, flights, goal, searchKeywords, mediaPlan } = campaignData;
   return (
     <main>
       <div className="content__container campaign__overview">
@@ -103,7 +103,7 @@ export default function Dashboard() {
           flightColor = companyColor;
           flightState = "active";
         } else if (isFinished) {
-          flightColor = companyColor;
+          flightColor = "var(--color-grey-500)";
           flightState = "finished";
         } else {
           flightColor = "var(--color-grey-500)";
@@ -128,20 +128,26 @@ export default function Dashboard() {
                       <img src="/OVERVIEW_ICON.svg" alt="OVERVIEW_ICON" />
                       <h4>Flight Overview</h4>
                     </div>
-                    <p className="flight__info__description">
-                      {isActive ? (
-                        <>
-                          The campaign has been running for{" "}
-                          <strong style={{ color: companyColor }}>{Math.ceil((currentDate - startDate) / (1000 * 60 * 60 * 24))} days</strong> and
-                          there are <strong style={{ color: companyColor }}>{Math.ceil((endDate - currentDate) / (1000 * 60 * 60 * 24))} days</strong>{" "}
-                          remaining in the flight. Nice! 👌
-                        </>
-                      ) : isFinished ? (
-                        `This flight ran for ${flightDuration} days and concluded successfully. What a run! 🔥`
-                      ) : (
-                        `This flight is scheduled to start in ${Math.ceil((startDate - currentDate) / (1000 * 60 * 60 * 24))} days and will run for ${flightDuration} days. Are you ready? 🚀`
-                      )}
-                    </p>
+
+                    {isActive ? (
+                      <p className="flight__info__description">
+                        The campaign has been running for{" "}
+                        <strong style={{ color: flightColor }}>{Math.ceil((currentDate - startDate) / (1000 * 60 * 60 * 24))} days</strong> and there
+                        are <strong style={{ color: flightColor }}>{Math.ceil((endDate - currentDate) / (1000 * 60 * 60 * 24))} days</strong>{" "}
+                        remaining in the flight. Nice! 👌
+                      </p>
+                    ) : isFinished ? (
+                      <p className="flight__info__description">
+                        This flight ran for ${flightDuration} days and concluded successfully. What a run! 🔥
+                      </p>
+                    ) : (
+                      <p className="flight__info__description">
+                        This flight is scheduled to start in{" "}
+                        <strong style={{ color: flightColor }}>${Math.ceil((startDate - currentDate) / (1000 * 60 * 60 * 24))} days</strong> and will
+                        run for
+                        <strong style={{ color: flightColor }}> ${flightDuration}</strong> days. Are you ready? 🚀
+                      </p>
+                    )}
                   </div>
                   <div className="progress__container">
                     <StateFlag type="state" state={flightState} name="flight" color={companyColor} />
@@ -214,49 +220,34 @@ export default function Dashboard() {
                       <p className="channel__info__yoy">YoY</p>
                       <p className="channel__info__benchmark">Benchmark</p>
                     </div>
-                    <ChannelContainer
-                      logo="https://images.vexels.com/media/users/3/137253/isolated/preview/90dd9f12fdd1eefb8c8976903944c026-facebook-icon-logo.png"
-                      name="Facebook"
-                      previousImpressions="75234"
-                      currentImpressions="158492"
-                      CPM="$4.12"
-                      YoY="8.3%"
-                      Benchmark="8,342 vs 9,875"
-                    />
-                    <ChannelContainer
-                      logo="https://i.pinimg.com/736x/36/6f/0c/366f0ca4f3546a6e34f8c5730658616c.jpg"
-                      name="Youtube TV"
-                      previousImpressions="91247"
-                      currentImpressions="142389"
-                      CPM="$3.89"
-                      YoY="2.4%"
-                      Benchmark="7,902 vs 10,231"
-                    />
-                    <ChannelContainer
-                      logo="https://content.blackhawknetwork.com/gcmimages/product/xxlarge/BFMPT2PGYN04GXBH0Y36CNMD88_0612202306:15:10.PNG"
-                      name="Hulu"
-                      previousImpressions="63458"
-                      currentImpressions="175301"
-                      CPM="$5.47"
-                      YoY="-1.2%"
-                      Benchmark="-"
-                    />
-                    <ChannelContainer
-                      name="Wallscape #857"
-                      previousImpressions="47826"
-                      currentImpressions="110239"
-                      CPM="$6.03"
-                      YoY="12.7%"
-                      Benchmark="-"
-                    />
-                    <ChannelContainer
-                      name="Bus USKs"
-                      previousImpressions="5678234"
-                      currentImpressions="187920"
-                      CPM="$3.21"
-                      YoY="4.5%"
-                      Benchmark="7,301 vs 9,450"
-                    />
+                    {flight.channels?.map((channel) => {
+                      console.log("Channel data:", channel);
+                      let metrics = {};
+                      let previousImpressions = "";
+                      if (Array.isArray(channel.metrics) && channel.metrics.length > 0) {
+                        metrics = channel.metrics[channel.metrics.length - 1];
+                        if (channel.metrics.length > 1) {
+                          previousImpressions = channel.metrics[channel.metrics.length - 2].impressions;
+                        }
+                        console.log(previousImpressions + " " + metrics.impressions);
+                      }
+                      return (
+                        <ChannelContainer
+                          key={channel.name}
+                          logo={channel.logoLink}
+                          name={channel.name}
+                          budget={channel.budget}
+                          spent={channel.spent}
+                          startDate={channel.startDate}
+                          endDate={channel.endDate}
+                          previousImpressions={previousImpressions}
+                          currentImpressions={`${metrics.impressions}`}
+                          CPM={`$${metrics.CPM}`}
+                          YoY={`${metrics.YOY}%`}
+                          Benchmark={metrics.benchmark}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
                 <div className="content__container flight__search__container">
@@ -315,8 +306,9 @@ export default function Dashboard() {
                 </div>
               </>
             ) : (
-              <div style={{ display: "flex", justifyContent: "center"}}>
-              <hr style={{ borderColor: "var(--color-grey-900)", margin: "0rem 1rem" }} /></div>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <hr style={{ borderColor: "var(--color-grey-900)", margin: "0rem 1rem" }} />
+              </div>
             )}
           </div>
         );

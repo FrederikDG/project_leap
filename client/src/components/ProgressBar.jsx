@@ -35,8 +35,7 @@ const ProgressBar = ({ startDate, endDate, color }) => {
           background: `linear-gradient(
             to right,
             ${darkColor} 0%,
-            ${color} 50%,
-            ${lightColor} 100%
+            ${color} 80%
           )`
         }}
       />

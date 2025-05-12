@@ -10,10 +10,26 @@ const ChannelContainer = ({
   CPM,
   YoY,
   Benchmark,
+  budget,
+  spent,
+  startDate,
+  endDate,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+        const percentageSpent = ((spent / budget) * 100).toFixed(0);
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+        const flightDuration = !isNaN(start) && !isNaN(end)
+          ? Math.ceil((end - start) / (1000 * 60 * 60 * 24))
+          : "N/A";
 
   const handleToggle = () => setIsOpen(open => !open);
+
+  // Helper function to format numbers with commas
+  const formatNumber = (num) => {
+    if (num === undefined || num === null) return num;
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   return (
     <div className={`channel__container${isOpen ? " open" : ""}`}>
@@ -37,7 +53,7 @@ const ChannelContainer = ({
             }
             alt="Impressions Triangle"
           />
-          <p>{currentImpressions}</p>
+          <p>{formatNumber(currentImpressions)}</p>
         </div>
         <p className="channel__cpm">{CPM}</p>
         <p className="channel__yoy">{YoY}</p>
@@ -48,12 +64,12 @@ const ChannelContainer = ({
       </div>
 
       <div className="channel__data__container">
-        <DataContainer title="working media" data="$634,006" />
-        <DataContainer title="total spent so far" data="$190,201" />
-        <DataContainer title="percentage spent" data="30%" />
-        <DataContainer title="launch date" data="03/02/2025" />
-        <DataContainer title="end date" data="05/23/2023" />
-        <DataContainer title="flight duration" data="65 days" />
+        <DataContainer title="working media" data={formatNumber(budget)} />
+        <DataContainer title="total spent so far" data={formatNumber(spent)} />
+        <DataContainer title="percentage spent" data={`${percentageSpent}%`} />
+        <DataContainer title="launch date" data={startDate}/>
+        <DataContainer title="end date" data={endDate} />
+        <DataContainer title="flight duration" data={`${flightDuration} days`} />
       </div>
     </div>
   );

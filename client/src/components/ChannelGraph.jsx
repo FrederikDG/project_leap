@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useId  } from "react";
 import * as d3 from "d3";
 import "../styles/ChannelGraph.css";
 
@@ -19,6 +19,7 @@ const CURVE_OPTIONS = [
 ];
 
 export default function MetricsGraph({ data, color }) {
+  const uniqueId = useId();
   const svgRef = useRef();
   const [selectedMetric, setSelectedMetric] = useState(METRIC_OPTIONS[0].key);
   const [selectedDomain, setSelectedDomain] = useState(DOMAIN_OPTIONS[0].key);
@@ -113,8 +114,8 @@ export default function MetricsGraph({ data, color }) {
 
     // defs: gradient + shadow
     const defs = svg.append("defs");
-    defs.append("linearGradient")
-      .attr("id", "area-gradient")
+defs.append("linearGradient")
+  .attr("id", `area-gradient-${uniqueId}`)
       .attr("x1", 0).attr("x2", 0)
       .attr("y1", 0).attr("y2", 1)
       .selectAll("stop")
@@ -189,9 +190,9 @@ export default function MetricsGraph({ data, color }) {
       .style("stroke", "#dfdfdf");
 
     // plot area + line + endpoints
-    svg.append("path").datum(points)
-      .attr("fill", "url(#area-gradient)")
-      .attr("d", area);
+svg.append("path").datum(points)
+  .attr("fill", `url(#area-gradient-${uniqueId})`)
+  .attr("d", area);
 
     svg.append("path").datum(points)
       .attr("fill", "none")

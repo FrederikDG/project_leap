@@ -9,7 +9,7 @@ export default function StateFlag({ type, state, count, name, color = "#82E184" 
   } else if (state === "inactive") {
     color = "var(--color-grey-500)";
   } else if (state === "finished") {
-    color = color;
+    color = "var(--color-grey-400)";
   }
   const containerStyle = { backgroundColor: color };
   let icon;

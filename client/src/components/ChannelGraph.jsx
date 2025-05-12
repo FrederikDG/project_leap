@@ -18,7 +18,7 @@ const CURVE_OPTIONS = [
   { key: "catmullRom", label: "Smooth" },
 ];
 
-export default function MetricsGraph({ channels, data, color }) {
+export default function MetricsGraph({ channels, color }) {
   const uniqueId = useId();
   const svgRef = useRef();
   const [selectedMetric, setSelectedMetric] = useState(METRIC_OPTIONS[0].key);
@@ -26,9 +26,19 @@ export default function MetricsGraph({ channels, data, color }) {
   const [selectedCurve, setSelectedCurve] = useState(CURVE_OPTIONS[1].key);
   const [selectedChannelIndex, setSelectedChannelIndex] = useState(0);
 
-  const selectedChannelData = channels?.[selectedChannelIndex]?.data || [];
-  const weeks = Array.isArray(data) ? data : Array.isArray(data.weeks) ? data.weeks : [];
 
+
+const normalizedChannels = channels.map(channel => ({
+  ...channel,
+  data: channel.metrics.map(m => ({
+    week: m.weekStartDate,
+    impressions: m.impressions,
+    cpm: m.CPM,
+    yearOverYear: m.YOY,
+  }))
+}));
+const selectedChannelData = normalizedChannels?.[selectedChannelIndex]?.data || [];
+const weeks = selectedChannelData;
   useEffect(() => {
     if (!weeks.length) return;
 
@@ -38,11 +48,10 @@ export default function MetricsGraph({ channels, data, color }) {
 
     // parse & map
     const parseDate = d3.timeParse("%Y-%m-%d");
-    const points = weeks.map((d) => ({
-      week: parseDate(d.week),
-      value: d.metrics[selectedMetric],
-    }));
-
+const points = weeks.map((d) => ({
+  week: parseDate(d.week),
+  value: d[selectedMetric],
+}));
     // formatter for Y-axis ticks and hover flag
     const formatY = (d) => {
       const base = d >= 1000 ? `${d / 1000}k` : d;

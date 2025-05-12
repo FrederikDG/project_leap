@@ -23,35 +23,35 @@
         {
           "id": 0,
           "name": "sms text messaging",
-          "impressions": 988770,
+          "impressions": 98870,
           "clicks": 13481,
           "CPC": 0.1
         },
         {
           "id": 1,
           "name": "find a short code",
-          "impressions": 851046,
+          "impressions": 85106,
           "clicks": 9795,
           "CPC": 0.13
         },
         {
           "id": 2,
           "name": "send sms",
-          "impressions": 1116982,
+          "impressions": 16982,
           "clicks": 7397,
           "CPC": 0.12
         },
         {
           "id": 3,
           "name": "sms online",
-          "impressions": 946088,
+          "impressions": 94688,
           "clicks": 10410,
           "CPC": 0.12
         },
         {
           "id": 4,
           "name": "online sms service",
-          "impressions": 1192386,
+          "impressions": 119386,
           "clicks": 7270,
           "CPC": 0.11
         }
@@ -72,7 +72,7 @@
               "weekEndDate": "2025-03-31",
               "CPM": 0.57,
               "YOY": 0.1,
-              "impressions": 86215087,
+              "impressions": 86287,
               "benchmark": "0.57 vs 0.24"
             },
             {
@@ -81,7 +81,7 @@
               "weekEndDate": "2025-04-07",
               "CPM": 0.54,
               "YOY": 0.12,
-              "impressions": 91004814,
+              "impressions": 91004,
               "benchmark": "0.54 vs 0.21"
             },
             {
@@ -90,7 +90,7 @@
               "weekEndDate": "2025-04-14",
               "CPM": 0.58,
               "YOY": 0.14,
-              "impressions": 84728620,
+              "impressions": 84720,
               "benchmark": "0.58 vs 0.23"
             },
             {
@@ -99,7 +99,7 @@
               "weekEndDate": "2025-04-21",
               "CPM": 0.54,
               "YOY": 0.13,
-              "impressions": 91004814,
+              "impressions": 91814,
               "benchmark": "0.54 vs 0.23"
             },
             {
@@ -108,7 +108,7 @@
               "weekEndDate": "2025-04-28",
               "CPM": 0.56,
               "YOY": 0.12,
-              "impressions": 87754642,
+              "impressions": 87642,
               "benchmark": "0.56 vs 0.21"
             }
           ]
@@ -128,7 +128,7 @@
               "weekEndDate": "2025-03-31",
               "CPM": 0.57,
               "YOY": 0.08,
-              "impressions": 160916842,
+              "impressions": 16092,
               "benchmark": "0.57 vs 0.23"
             },
             {
@@ -137,7 +137,7 @@
               "weekEndDate": "2025-04-07",
               "CPM": 0.52,
               "YOY": 0.08,
-              "impressions": 176389615,
+              "impressions": 17615,
               "benchmark": "0.52 vs 0.23"
             },
             {
@@ -146,7 +146,7 @@
               "weekEndDate": "2025-04-14",
               "CPM": 0.57,
               "YOY": 0.07,
-              "impressions": 160916842,
+              "impressions": 16092,
               "benchmark": "0.57 vs 0.21"
             },
             {
@@ -155,7 +155,7 @@
               "weekEndDate": "2025-04-21",
               "CPM": 0.54,
               "YOY": 0.12,
-              "impressions": 169856666,
+              "impressions": 16986,
               "benchmark": "0.54 vs 0.25"
             },
             {
@@ -164,7 +164,7 @@
               "weekEndDate": "2025-04-28",
               "CPM": 0.61,
               "YOY": 0.08,
-              "impressions": 150364918,
+              "impressions": 14918,
               "benchmark": "0.61 vs 0.22"
             }
           ]
@@ -184,7 +184,7 @@
               "weekEndDate": "2025-03-31",
               "CPM": 0.49,
               "YOY": 0.13,
-              "impressions": 183930612,
+              "impressions": 18392,
               "benchmark": "0.49 vs 0.24"
             },
             {
@@ -193,7 +193,7 @@
               "weekEndDate": "2025-04-07",
               "CPM": 0.55,
               "YOY": 0.09,
-              "impressions": 163865454,
+              "impressions": 16354,
               "benchmark": "0.55 vs 0.2"
             },
             {
@@ -202,7 +202,7 @@
               "weekEndDate": "2025-04-14",
               "CPM": 0.54,
               "YOY": 0.07,
-              "impressions": 166900000,
+              "impressions": 16690,
               "benchmark": "0.54 vs 0.25"
             },
             {
@@ -211,7 +211,7 @@
               "weekEndDate": "2025-04-21",
               "CPM": 0.58,
               "YOY": 0.05,
-              "impressions": 155389655,
+              "impressions": 15535,
               "benchmark": "0.58 vs 0.21"
             },
             {
@@ -220,7 +220,7 @@
               "weekEndDate": "2025-04-28",
               "CPM": 0.51,
               "YOY": 0.1,
-              "impressions": 176717647,
+              "impressions": 17677,
               "benchmark": "0.51 vs 0.2"
             }
           ]
@@ -241,35 +241,35 @@
         {
           "id": 0,
           "name": "sms text messaging",
-          "impressions": 844649,
+          "impressions": 144649,
           "clicks": 12877,
           "CPC": 0.12
         },
         {
           "id": 1,
           "name": "find a short code",
-          "impressions": 1033815,
+          "impressions": 103265,
           "clicks": 9048,
           "CPC": 0.09
         },
         {
           "id": 2,
           "name": "send sms",
-          "impressions": 1088728,
+          "impressions": 108728,
           "clicks": 13087,
           "CPC": 0.12
         },
         {
           "id": 3,
           "name": "sms online",
-          "impressions": 928541,
+          "impressions": 128541,
           "clicks": 10868,
           "CPC": 0.09
         },
         {
           "id": 4,
           "name": "online sms service",
-          "impressions": 1214683,
+          "impressions": 121683,
           "clicks": 8738,
           "CPC": 0.12
         }
@@ -290,25 +290,25 @@
               "weekEndDate": "2025-04-07",
               "CPM": 0.54,
               "YOY": 0.05,
-              "impressions": 180662222,
+              "impressions": 13222,
               "benchmark": "0.54 vs 0.19"
             },
             {
               "id": 1,
               "weekStartDate": "2025-04-08",
               "weekEndDate": "2025-04-14",
-              "CPM": 0.55,
+              "CPM": 0.57,
               "YOY": 0.08,
-              "impressions": 177377454,
+              "impressions": 17754,
               "benchmark": "0.55 vs 0.2"
             },
             {
               "id": 2,
               "weekStartDate": "2025-04-15",
               "weekEndDate": "2025-04-21",
-              "CPM": 0.54,
+              "CPM": 0.58,
               "YOY": 0.13,
-              "impressions": 180662222,
+              "impressions": 12022,
               "benchmark": "0.54 vs 0.2"
             },
             {
@@ -326,7 +326,7 @@
               "weekEndDate": "2025-05-05",
               "CPM": 0.59,
               "YOY": 0.14,
-              "impressions": 1653518,
+              "impressions": 16518,
               "benchmark": "0.59 vs 0.21"
             }
           ]
@@ -334,7 +334,7 @@
         {
           "id": 1,
           "name": "YouTube",
-          "logoLink": "https://goodly.co.in/wp-content/uploads/2023/10/youtube-logo-png-46016-1.png",
+          "logoLink": "https://images.vexels.com/media/users/3/137425/isolated/preview/f2ea1ded4d037633f687ee389a571086-youtube-icon-logo.png",
           "budget": 494931,
           "spent": 299759,
           "startDate": "2025-04-01",
@@ -346,7 +346,7 @@
               "weekEndDate": "2025-04-07",
               "CPM": 0.48,
               "YOY": 0.12,
-              "impressions": 124899583,
+              "impressions": 16243,
               "benchmark": "0.48 vs 0.2"
             },
             {
@@ -355,7 +355,7 @@
               "weekEndDate": "2025-04-14",
               "CPM": 0.6,
               "YOY": 0.09,
-              "impressions": 99919666,
+              "impressions": 19666,
               "benchmark": "0.6 vs 0.23"
             },
             {
@@ -363,8 +363,8 @@
               "weekStartDate": "2025-04-15",
               "weekEndDate": "2025-04-21",
               "CPM": 0.5,
-              "YOY": 0.07,
-              "impressions": 119903600,
+              "YOY": 0.21,
+              "impressions": 11600,
               "benchmark": "0.5 vs 0.22"
             },
             {
@@ -372,8 +372,8 @@
               "weekStartDate": "2025-04-22",
               "weekEndDate": "2025-04-28",
               "CPM": 0.53,
-              "YOY": 0.07,
-              "impressions": 113116603,
+              "YOY": 0.17,
+              "impressions": 11603,
               "benchmark": "0.53 vs 0.22"
             },
             {
@@ -382,7 +382,7 @@
               "weekEndDate": "2025-05-05",
               "CPM": 0.56,
               "YOY": 0.13,
-              "impressions": 107056785,
+              "impressions": 15785,
               "benchmark": "0.56 vs 0.24"
             }
           ]
@@ -402,7 +402,7 @@
               "weekEndDate": "2025-04-07",
               "CPM": 0.5,
               "YOY": 0.05,
-              "impressions": 199497600,
+              "impressions": 19900,
               "benchmark": "0.5 vs 0.23"
             },
             {
@@ -411,7 +411,7 @@
               "weekEndDate": "2025-04-14",
               "CPM": 0.57,
               "YOY": 0.07,
-              "impressions": 174997894,
+              "impressions": 17494,
               "benchmark": "0.57 vs 0.23"
             },
             {
@@ -420,7 +420,7 @@
               "weekEndDate": "2025-04-21",
               "CPM": 0.53,
               "YOY": 0.11,
-              "impressions": 188205283,
+              "impressions": 18883,
               "benchmark": "0.53 vs 0.2"
             },
             {
@@ -429,7 +429,7 @@
               "weekEndDate": "2025-04-28",
               "CPM": 0.49,
               "YOY": 0.14,
-              "impressions": 203568979,
+              "impressions": 20356,
               "benchmark": "0.49 vs 0.2"
             },
             {
@@ -438,7 +438,7 @@
               "weekEndDate": "2025-05-05",
               "CPM": 0.59,
               "YOY": 0.07,
-              "impressions": 169065762,
+              "impressions": 16762,
               "benchmark": "0.59 vs 0.23"
             }
           ]
@@ -447,7 +447,7 @@
     },
     {
       "id": 2,
-      "startDate": "2025-10-01",
+      "startDate": "2025-06-01",
       "endDate": "2025-12-29",
       "budget": 581660,
       "spent": 0,

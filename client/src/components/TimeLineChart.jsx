@@ -180,19 +180,19 @@ export default function TimelineChartD3({ flights, color }) {
     // Spend labels (only on wide bars)
     svg
       .append("g")
-      .selectAll("text.spend")
+      .selectAll("text.budget")
       .data(
         // filter out any flights whose pixel‐width is under the threshold
         data.filter((d) => xScale(d.end) - xScale(d.start) >= budgetThreshold)
       )
       .join("text")
-      .attr("class", "spend")
+      .attr("class", "budget")
       .attr("x", (d) => xScale(d.end) - 7) // pad 5px from right edge
       .attr("y", (d) => yScale(d.name) + yScale.bandwidth() / 2 + 4)
       .attr("text-anchor", "end")
       .text((d) => {
-        const spend = d.spend.toString();
-        return spend.length > 3 ? `$${spend.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}` : `$${spend}`;
+        const budget = d.budget.toString();
+        return budget.length > 3 ? `$${budget.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}` : `$${budget}`;
       })
       .attr("fill", "#000")
       .style("font-size", "12px")

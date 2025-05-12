@@ -1,0 +1,67 @@
+.register{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  width: 100vw;height: 100vh;
+  background-color: var(--color-black);
+}
+
+.register__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.register__logo {
+  position: absolute;
+  bottom: 10px;
+  width: 50px;
+}
+
+.register__textfield__container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.register__textfield {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  font-family: "Universal Sans 460", sans-serif;
+  padding: 0.5rem;
+  border-bottom: 2px solid var(--color-grey-900);
+  color: var(--color-white);
+  transition: all 0.3s ease-in-out;
+}
+
+.register__textfield:focus {
+  outline: none;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-grey-900);
+}
+
+.register__textfield--password {
+  -webkit-text-security: disc;
+}
+
+.register__textfield:-webkit-autofill,
+.register__textfield:-webkit-autofill:hover,
+.register__textfield:-webkit-autofill:focus,
+.register__textfield:-webkit-autofill:active {
+color: var(--color-white) !important;
+  -webkit-text-fill-color: var(--color-white) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-black) inset !important;
+  box-shadow: 0 0 0px 1000px var(--color-black) inset !important;
+}
+
+.register__header{
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  
+}

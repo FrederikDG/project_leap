@@ -1,12 +1,12 @@
-# React + Vite
+## 📈 Project Leap
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project Leap is a React–powered data‑dashboard platform that lets teams securely publish, share, and visualize Google Sheets in a beautiful, easy‑to‑use interface. With a simple login wall and per‑user management of spreadsheets, Project Leap transforms raw sheet URLs into interactive, real‑time dashboards—no spreadsheet skills required.
 
-Currently, two official plugins are available:
+**Key Highlights:**
+- **Secure Access:** Built‑in authentication ensures only your team can view or add spreadsheets.
+- **Dynamic Onboarding:** Users can add any Google Sheets link; Project Leap automatically fetches and displays its data.
+- **Polished Visuals:** Out‑of‑the‑box line, bar, and pie charts powered by Chart.js (or Recharts) bring spreadsheets to life.
+- **Modular Architecture:** Clean React pages & API routes separate concerns—auth, data fetching, and chart rendering.
+- **Easy Deployment:** Deploy on Vercel (or Netlify) with a few environment variables—no server‑management headache.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Whether you need a quick overview of sales numbers, a project tracker, or an executive summary—Project Leap makes it effortless to turn spreadsheet data into actionable insights. Get started by cloning this repo, configuring your Google Service Account and database, and watching your sheets soar!  

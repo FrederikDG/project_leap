@@ -1,0 +1,27 @@
+.footer__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem;
+    gap: 4rem;
+}
+
+.footer__svg{
+    fill: var(--color-grey-900);
+}
+
+.footer__text{
+    font-family: 'Universal Sans 460', sans-serif;
+    color: var(--color-grey-500);
+    text-align: center;
+font-weight: 500;
+}
+
+.footer__text__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}

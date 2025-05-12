@@ -1,0 +1,10 @@
+.progress__bar{
+    border-radius: 5px;
+    height: 10px;
+}
+
+.progress__bar--background{
+    background-color: var(--color-grey-200);
+    border-radius: 5px;
+    height: 10px;
+}

@@ -1,0 +1,30 @@
+.keyword__container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  background-color: var(--color-white);
+  padding: 1.7rem 1.5rem;
+  border-radius: 1rem;
+  text-wrap: nowrap;
+}
+
+.keyword__container *{
+    font-family: 'Universal Sans 460', sans-serif;
+}
+
+.keyword__word{
+    grid-column: 1 / 4;
+    font-weight: 500;
+}
+
+.keyword__impressions{
+    grid-column: 6 / 8;
+    font-weight: 500;
+}
+.keyword__click{
+    grid-column: 9 / 11;
+    font-weight: 500;
+}
+.keyword__cpc{
+    grid-column: 12 / 13;
+    font-weight: 500;
+}

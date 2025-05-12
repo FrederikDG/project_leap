@@ -1,0 +1,13 @@
+.active__container {
+    display: inline-block;
+    border: 2px solid var(--color-primary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    background-color: var(--color-grey-200);
+    line-height: 1;
+  }
+  
+  .active__container .active {
+    font-family: "Neue Machina", sans-serif;
+  }
+  

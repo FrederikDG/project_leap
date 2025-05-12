@@ -1,0 +1,661 @@
+{
+  "id": 0,
+  "link": "https://docs.google.com/spreadsheets/d/1fGtZ6cXgMqU9jiJ7HaecY9ddOdu8khX6n5EPIfIygFM/edit?gid=604272709#gid=604272709",
+  "name": "Licensed Spectrum",
+  "goal": "Convince policymakers and DC opinion elites that more licensed spectrum is a good thing for America.",
+  "mediaPlan": "Licensed Spectrum is an awareness-focused campaign with a heavily digital strategy and targeted DC OOH placements.",
+  "startDate": "2025-03-25",
+  "endDate": "2025-05-23",
+  "budget": 1750987,
+  "spent": 1048451,
+  "flights": [
+    {
+      "id": 0,
+      "startDate": "2025-01-23",
+      "endDate": "2025-03-31",
+      "budget": 614245,
+      "spent": 614245,
+      "searchImpressionShare": 0.43,
+      "CTR": 0.11,
+      "CPC": 0.1,
+      "keywords": [
+        {
+          "id": 0,
+          "name": "sms text messaging",
+          "impressions": 988770,
+          "clicks": 13481,
+          "CPC": 0.1
+        },
+        {
+          "id": 1,
+          "name": "find a short code",
+          "impressions": 851046,
+          "clicks": 9795,
+          "CPC": 0.13
+        },
+        {
+          "id": 2,
+          "name": "send sms",
+          "impressions": 1116982,
+          "clicks": 7397,
+          "CPC": 0.12
+        },
+        {
+          "id": 3,
+          "name": "sms online",
+          "impressions": 946088,
+          "clicks": 10410,
+          "CPC": 0.12
+        },
+        {
+          "id": 4,
+          "name": "online sms service",
+          "impressions": 1192386,
+          "clicks": 7270,
+          "CPC": 0.11
+        },
+        {
+          "id": 5,
+          "name": "wireless licensing",
+          "impressions": 1037182,
+          "clicks": 9320,
+          "CPC": 0.09
+        },
+        {
+          "id": 6,
+          "name": "spectrum allocation",
+          "impressions": 1201943,
+          "clicks": 10903,
+          "CPC": 0.11
+        }
+      ],
+      "channels": [
+        {
+          "id": 0,
+          "name": "Facebook",
+          "logoLink": "https://logo.com/facebook.svg",
+          "budget": 511739,
+          "spent": 245713,
+          "startDate": "2025-03-25",
+          "endDate": "2025-05-23",
+          "metrics": [
+            {
+              "id": 0,
+              "weekStartDate": "2025-03-25",
+              "weekEndDate": "2025-03-31",
+              "CPM": 0.57,
+              "YOY": 0.1,
+              "Benchmark": 0.24
+            },
+            {
+              "id": 1,
+              "weekStartDate": "2025-04-01",
+              "weekEndDate": "2025-04-07",
+              "CPM": 0.54,
+              "YOY": 0.12,
+              "Benchmark": 0.21
+            },
+            {
+              "id": 2,
+              "weekStartDate": "2025-04-08",
+              "weekEndDate": "2025-04-14",
+              "CPM": 0.58,
+              "YOY": 0.14,
+              "Benchmark": 0.23
+            },
+            {
+              "id": 3,
+              "weekStartDate": "2025-04-15",
+              "weekEndDate": "2025-04-21",
+              "CPM": 0.54,
+              "YOY": 0.13,
+              "Benchmark": 0.23
+            },
+            {
+              "id": 4,
+              "weekStartDate": "2025-04-22",
+              "weekEndDate": "2025-04-28",
+              "CPM": 0.56,
+              "YOY": 0.12,
+              "Benchmark": 0.21
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "Google",
+          "logoLink": "https://logo.com/google.svg",
+          "budget": 494556,
+          "spent": 458613,
+          "startDate": "2025-03-25",
+          "endDate": "2025-05-23",
+          "metrics": [
+            {
+              "id": 0,
+              "weekStartDate": "2025-03-25",
+              "weekEndDate": "2025-03-31",
+              "CPM": 0.57,
+              "YOY": 0.08,
+              "Benchmark": 0.23
+            },
+            {
+              "id": 1,
+              "weekStartDate": "2025-04-01",
+              "weekEndDate": "2025-04-07",
+              "CPM": 0.52,
+              "YOY": 0.08,
+              "Benchmark": 0.23
+            },
+            {
+              "id": 2,
+              "weekStartDate": "2025-04-08",
+              "weekEndDate": "2025-04-14",
+              "CPM": 0.57,
+              "YOY": 0.07,
+              "Benchmark": 0.21
+            },
+            {
+              "id": 3,
+              "weekStartDate": "2025-04-15",
+              "weekEndDate": "2025-04-21",
+              "CPM": 0.54,
+              "YOY": 0.12,
+              "Benchmark": 0.25
+            },
+            {
+              "id": 4,
+              "weekStartDate": "2025-04-22",
+              "weekEndDate": "2025-04-28",
+              "CPM": 0.61,
+              "YOY": 0.08,
+              "Benchmark": 0.22
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Twitter",
+          "logoLink": "https://logo.com/twitter.svg",
+          "budget": 516559,
+          "spent": 450630,
+          "startDate": "2025-03-25",
+          "endDate": "2025-05-23",
+          "metrics": [
+            {
+              "id": 0,
+              "weekStartDate": "2025-03-25",
+              "weekEndDate": "2025-03-31",
+              "CPM": 0.49,
+              "YOY": 0.13,
+              "Benchmark": 0.24
+            },
+            {
+              "id": 1,
+              "weekStartDate": "2025-04-01",
+              "weekEndDate": "2025-04-07",
+              "CPM": 0.55,
+              "YOY": 0.09,
+              "Benchmark": 0.2
+            },
+            {
+              "id": 2,
+              "weekStartDate": "2025-04-08",
+              "weekEndDate": "2025-04-14",
+              "CPM": 0.54,
+              "YOY": 0.07,
+              "Benchmark": 0.25
+            },
+            {
+              "id": 3,
+              "weekStartDate": "2025-04-15",
+              "weekEndDate": "2025-04-21",
+              "CPM": 0.58,
+              "YOY": 0.05,
+              "Benchmark": 0.21
+            },
+            {
+              "id": 4,
+              "weekStartDate": "2025-04-22",
+              "weekEndDate": "2025-04-28",
+              "CPM": 0.51,
+              "YOY": 0.1,
+              "Benchmark": 0.2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "startDate": "2025-03-01",
+      "endDate": "2025-07-30",
+      "budget": 546701,
+      "spent": 269650,
+      "searchImpressionShare": 0.42,
+      "CTR": 0.11,
+      "CPC": 0.1,
+      "keywords": [
+        {
+          "id": 0,
+          "name": "sms text messaging",
+          "impressions": 844649,
+          "clicks": 12877,
+          "CPC": 0.12
+        },
+        {
+          "id": 1,
+          "name": "find a short code",
+          "impressions": 1033815,
+          "clicks": 9048,
+          "CPC": 0.09
+        },
+        {
+          "id": 2,
+          "name": "send sms",
+          "impressions": 1088728,
+          "clicks": 13087,
+          "CPC": 0.12
+        },
+        {
+          "id": 3,
+          "name": "sms online",
+          "impressions": 928541,
+          "clicks": 10868,
+          "CPC": 0.09
+        },
+        {
+          "id": 4,
+          "name": "online sms service",
+          "impressions": 1214683,
+          "clicks": 8738,
+          "CPC": 0.12
+        },
+        {
+          "id": 5,
+          "name": "wireless licensing",
+          "impressions": 983643,
+          "clicks": 11272,
+          "CPC": 0.1
+        },
+        {
+          "id": 6,
+          "name": "spectrum allocation",
+          "impressions": 989627,
+          "clicks": 13076,
+          "CPC": 0.1
+        }
+      ],
+      "channels": [
+        {
+          "id": 0,
+          "name": "LinkedIn",
+          "logoLink": "https://logo.com/linkedin.svg",
+          "budget": 488474,
+          "spent": 487788,
+          "startDate": "2025-04-01",
+          "endDate": "2025-05-10",
+          "metrics": [
+            {
+              "id": 0,
+              "weekStartDate": "2025-04-01",
+              "weekEndDate": "2025-04-07",
+              "CPM": 0.54,
+              "YOY": 0.05,
+              "Benchmark": 0.19
+            },
+            {
+              "id": 1,
+              "weekStartDate": "2025-04-08",
+              "weekEndDate": "2025-04-14",
+              "CPM": 0.55,
+              "YOY": 0.08,
+              "Benchmark": 0.2
+            },
+            {
+              "id": 2,
+              "weekStartDate": "2025-04-15",
+              "weekEndDate": "2025-04-21",
+              "CPM": 0.54,
+              "YOY": 0.13,
+              "Benchmark": 0.2
+            },
+            {
+              "id": 3,
+              "weekStartDate": "2025-04-22",
+              "weekEndDate": "2025-04-28",
+              "CPM": 0.55,
+              "YOY": 0.11,
+              "Benchmark": 0.2
+            },
+            {
+              "id": 4,
+              "weekStartDate": "2025-04-29",
+              "weekEndDate": "2025-05-05",
+              "CPM": 0.59,
+              "YOY": 0.14,
+              "Benchmark": 0.21
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "YouTube",
+          "logoLink": "https://logo.com/youtube.svg",
+          "budget": 494931,
+          "spent": 299759,
+          "startDate": "2025-04-01",
+          "endDate": "2025-05-10",
+          "metrics": [
+            {
+              "id": 0,
+              "weekStartDate": "2025-04-01",
+              "weekEndDate": "2025-04-07",
+              "CPM": 0.48,
+              "YOY": 0.12,
+              "Benchmark": 0.2
+            },
+            {
+              "id": 1,
+              "weekStartDate": "2025-04-08",
+              "weekEndDate": "2025-04-14",
+              "CPM": 0.6,
+              "YOY": 0.09,
+              "Benchmark": 0.23
+            },
+            {
+              "id": 2,
+              "weekStartDate": "2025-04-15",
+              "weekEndDate": "2025-04-21",
+              "CPM": 0.5,
+              "YOY": 0.07,
+              "Benchmark": 0.22
+            },
+            {
+              "id": 3,
+              "weekStartDate": "2025-04-22",
+              "weekEndDate": "2025-04-28",
+              "CPM": 0.53,
+              "YOY": 0.07,
+              "Benchmark": 0.22
+            },
+            {
+              "id": 4,
+              "weekStartDate": "2025-04-29",
+              "weekEndDate": "2025-05-05",
+              "CPM": 0.56,
+              "YOY": 0.13,
+              "Benchmark": 0.24
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Instagram",
+          "logoLink": "https://logo.com/instagram.svg",
+          "budget": 503773,
+          "spent": 498744,
+          "startDate": "2025-04-01",
+          "endDate": "2025-05-10",
+          "metrics": [
+            {
+              "id": 0,
+              "weekStartDate": "2025-04-01",
+              "weekEndDate": "2025-04-07",
+              "CPM": 0.5,
+              "YOY": 0.05,
+              "Benchmark": 0.23
+            },
+            {
+              "id": 1,
+              "weekStartDate": "2025-04-08",
+              "weekEndDate": "2025-04-14",
+              "CPM": 0.57,
+              "YOY": 0.07,
+              "Benchmark": 0.23
+            },
+            {
+              "id": 2,
+              "weekStartDate": "2025-04-15",
+              "weekEndDate": "2025-04-21",
+              "CPM": 0.53,
+              "YOY": 0.11,
+              "Benchmark": 0.2
+            },
+            {
+              "id": 3,
+              "weekStartDate": "2025-04-22",
+              "weekEndDate": "2025-04-28",
+              "CPM": 0.49,
+              "YOY": 0.14,
+              "Benchmark": 0.2
+            },
+            {
+              "id": 4,
+              "weekStartDate": "2025-04-29",
+              "weekEndDate": "2025-05-05",
+              "CPM": 0.59,
+              "YOY": 0.07,
+              "Benchmark": 0.23
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "startDate": "2025-10-01",
+      "endDate": "2025-12-29",
+      "budget": 581660,
+      "spent": 484828,
+      "searchImpressionShare": 0.33,
+      "CTR": 0.1,
+      "CPC": 0.1,
+      "keywords": [
+        {
+          "id": 0,
+          "name": "sms text messaging",
+          "impressions": 917877,
+          "clicks": 12416,
+          "CPC": 0.12
+        },
+        {
+          "id": 1,
+          "name": "find a short code",
+          "impressions": 989136,
+          "clicks": 8602,
+          "CPC": 0.1
+        },
+        {
+          "id": 2,
+          "name": "send sms",
+          "impressions": 1031434,
+          "clicks": 13915,
+          "CPC": 0.1
+        },
+        {
+          "id": 3,
+          "name": "sms online",
+          "impressions": 977484,
+          "clicks": 8654,
+          "CPC": 0.11
+        },
+        {
+          "id": 4,
+          "name": "online sms service",
+          "impressions": 836611,
+          "clicks": 11550,
+          "CPC": 0.09
+        },
+        {
+          "id": 5,
+          "name": "wireless licensing",
+          "impressions": 1039628,
+          "clicks": 13644,
+          "CPC": 0.1
+        },
+        {
+          "id": 6,
+          "name": "spectrum allocation",
+          "impressions": 899291,
+          "clicks": 7900,
+          "CPC": 0.11
+        }
+      ],
+      "channels": [
+        {
+          "id": 0,
+          "name": "Reddit",
+          "logoLink": "https://logo.com/reddit.svg",
+          "budget": 513884,
+          "spent": 496598,
+          "startDate": "2025-04-15",
+          "endDate": "2025-05-20",
+          "metrics": [
+            {
+              "id": 0,
+              "weekStartDate": "2025-04-15",
+              "weekEndDate": "2025-04-21",
+              "CPM": 0.55,
+              "YOY": 0.11,
+              "Benchmark": 0.22
+            },
+            {
+              "id": 1,
+              "weekStartDate": "2025-04-22",
+              "weekEndDate": "2025-04-28",
+              "CPM": 0.52,
+              "YOY": 0.11,
+              "Benchmark": 0.23
+            },
+            {
+              "id": 2,
+              "weekStartDate": "2025-04-29",
+              "weekEndDate": "2025-05-05",
+              "CPM": 0.52,
+              "YOY": 0.1,
+              "Benchmark": 0.25
+            },
+            {
+              "id": 3,
+              "weekStartDate": "2025-05-06",
+              "weekEndDate": "2025-05-12",
+              "CPM": 0.59,
+              "YOY": 0.08,
+              "Benchmark": 0.22
+            },
+            {
+              "id": 4,
+              "weekStartDate": "2025-05-13",
+              "weekEndDate": "2025-05-19",
+              "CPM": 0.53,
+              "YOY": 0.11,
+              "Benchmark": 0.23
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "Snapchat",
+          "logoLink": "https://logo.com/snapchat.svg",
+          "budget": 504948,
+          "spent": 382170,
+          "startDate": "2025-04-15",
+          "endDate": "2025-05-20",
+          "metrics": [
+            {
+              "id": 0,
+              "weekStartDate": "2025-04-15",
+              "weekEndDate": "2025-04-21",
+              "CPM": 0.49,
+              "YOY": 0.07,
+              "Benchmark": 0.2
+            },
+            {
+              "id": 1,
+              "weekStartDate": "2025-04-22",
+              "weekEndDate": "2025-04-28",
+              "CPM": 0.6,
+              "YOY": 0.1,
+              "Benchmark": 0.21
+            },
+            {
+              "id": 2,
+              "weekStartDate": "2025-04-29",
+              "weekEndDate": "2025-05-05",
+              "CPM": 0.58,
+              "YOY": 0.13,
+              "Benchmark": 0.24
+            },
+            {
+              "id": 3,
+              "weekStartDate": "2025-05-06",
+              "weekEndDate": "2025-05-12",
+              "CPM": 0.6,
+              "YOY": 0.09,
+              "Benchmark": 0.25
+            },
+            {
+              "id": 4,
+              "weekStartDate": "2025-05-13",
+              "weekEndDate": "2025-05-19",
+              "CPM": 0.57,
+              "YOY": 0.13,
+              "Benchmark": 0.19
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "TikTok",
+          "logoLink": "https://logo.com/tiktok.svg",
+          "budget": 513618,
+          "spent": 425758,
+          "startDate": "2025-04-15",
+          "endDate": "2025-05-20",
+          "metrics": [
+            {
+              "id": 0,
+              "weekStartDate": "2025-04-15",
+              "weekEndDate": "2025-04-21",
+              "CPM": 0.52,
+              "YOY": 0.11,
+              "Benchmark": 0.23
+            },
+            {
+              "id": 1,
+              "weekStartDate": "2025-04-22",
+              "weekEndDate": "2025-04-28",
+              "CPM": 0.54,
+              "YOY": 0.08,
+              "Benchmark": 0.24
+            },
+            {
+              "id": 2,
+              "weekStartDate": "2025-04-29",
+              "weekEndDate": "2025-05-05",
+              "CPM": 0.56,
+              "YOY": 0.09,
+              "Benchmark": 0.22
+            },
+            {
+              "id": 3,
+              "weekStartDate": "2025-05-06",
+              "weekEndDate": "2025-05-12",
+              "CPM": 0.59,
+              "YOY": 0.13,
+              "Benchmark": 0.21
+            },
+            {
+              "id": 4,
+              "weekStartDate": "2025-05-13",
+              "weekEndDate": "2025-05-19",
+              "CPM": 0.53,
+              "YOY": 0.12,
+              "Benchmark": 0.19
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

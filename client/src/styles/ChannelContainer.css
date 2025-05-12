@@ -1,0 +1,122 @@
+.channel__stats__container {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  align-items: center;
+  background-color: var(--color-grey-100);
+  padding: 1.2rem 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--color-grey-200);
+  font-family: "universal sans 460", sans-serif;
+  gap: 0.5rem;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.channel__container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-grey-200);
+  border-radius: 1rem;
+  max-height: 40rem;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.channel__data__container {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 1rem;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  transform: translate(0, -9rem);
+  transition: all 0.6s ease-in-out;
+}
+
+.channel__container.open .channel__data__container {
+  max-height: 13rem;
+  opacity: 1;
+  padding: 1rem;
+  transform: translate(0, 0);
+}
+
+.channel__container.open .channel__stats__container {
+  background-color: var(--color-white);
+  border-radius: 1rem 1rem 0rem 0rem;
+}
+
+.channel__container.open .channel__button{
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.channel__container.open {
+  border: 2px solid var(--color-black);
+  background-color: var(--color-white);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  margin: 0rem  0rem 0.5rem;
+}
+.channel__stats__container * {
+  font-family: "universal sans 460", sans-serif;
+}
+
+.channel__impressions,
+.channel__title__container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.channel__logo {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.channel__button {
+  grid-column: 23/25;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 1rem;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 1px solid var(--color-grey-500);
+  transition: all 0.3s ease-in-out;
+  font-family: "Universal Sans 460", sans-serif;
+}
+
+.channel__button:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.channel__title__container {
+  grid-column: 1 / 4;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.channel__impressions {
+  grid-column: 9 / 11;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.channel__cpm {
+  grid-column: 13/15;
+}
+.channel__yoy {
+  grid-column: 17/19;
+}
+.channel__benchmark {
+  grid-column: 20 /22;
+  text-wrap: nowrap;
+}

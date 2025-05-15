@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import PieDataContainer from "./PieDataContainer";
@@ -7,14 +6,13 @@ import "../styles/PieChart.css";
 const PieChart = ({ channels, color, flightState }) => {
   const svgRef = useRef(null);
 
-  
   const budgets = channels.map((d) => d.budget);
   const [minB, maxB] = [d3.min(budgets), d3.max(budgets)];
   let base = "";
   let adjustedColor = color;
   if (flightState !== "active") {
     base = d3.hsl("#808080");
-    adjustedColor="#808080";
+    adjustedColor = "#808080";
   } else {
     base = d3.hsl(color);
   }
@@ -29,10 +27,11 @@ const PieChart = ({ channels, color, flightState }) => {
   const sliceColors = slices.map((d) => d3.hsl(base.h, base.s, lightness(d.data.budget)).toString());
 
   useEffect(() => {
-    const padding = 80; 
-    const width = 600 + padding * 2;
-    const height = width;
-    const radius = 600 / 2; 
+    const maxWidth = 600; // Set a maximum width for the SVG
+    const width = Math.min(document.body.clientWidth * 0.9, maxWidth);
+
+    const height = width; // Make the height equal to the width
+    const radius = Math.min(width, height) / 2; // Adjust radius based on the smaller dimension
 
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
@@ -41,11 +40,11 @@ const PieChart = ({ channels, color, flightState }) => {
     const formatter = d3.format(",");
 
     const g = svg
-    .attr("width", width)
-    .attr("height", height)
-    .append("g")
-    .attr("transform", `translate(${width / 2}, ${height / 2})`);
-  
+      .attr("width", width)
+      .attr("height", height)
+      .append("g")
+      .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
     const arcGen = d3
       .arc()
       .innerRadius(radius * 0.75)
@@ -68,12 +67,12 @@ const PieChart = ({ channels, color, flightState }) => {
         const [x, y] = d3.pointer(event, svg.node());
         const tooltipBBox = tooltipRect.node().getBBox();
         const tooltipX = x - radius - tooltipBBox.width;
-        const tooltipY = y - radius - tooltipBBox.height-50; 
+        const tooltipY = y - radius - tooltipBBox.height - 50;
         tooltipG.attr("transform", `translate(${tooltipX}, ${tooltipY})`);
-        svg.style("cursor", "none"); 
-            })
-            .on("mouseout", () => {
-        svg.style("cursor", null); 
+        svg.style("cursor", "none");
+      })
+      .on("mouseout", () => {
+        svg.style("cursor", null);
         tooltipG.style("display", "none");
       });
 
@@ -95,7 +94,6 @@ const PieChart = ({ channels, color, flightState }) => {
       .attr("x", 10)
       .attr("y", 38);
 
-    
     const tooltipRect = tooltipG
       .insert("rect", ":first-child")
       .attr("fill", adjustedColor)
@@ -103,11 +101,10 @@ const PieChart = ({ channels, color, flightState }) => {
       .attr("stroke-width", 1)
       .attr("rx", 6)
       .attr("ry", 6);
-      tooltipRect.style("pointer-events", "none");
-      tooltipText1.style("pointer-events", "none");
-      tooltipText2.style("pointer-events", "none");
-      
- 
+    tooltipRect.style("pointer-events", "none");
+    tooltipText1.style("pointer-events", "none");
+    tooltipText2.style("pointer-events", "none");
+
     const updateTooltipRectSize = () => {
       const text1BBox = tooltipText1.node().getBBox();
       const text2BBox = tooltipText2.node().getBBox();

@@ -46,3 +46,19 @@ bottom: 1rem;
     transform: translate(0px);
     opacity: 1;
 }
+
+@media screen and (max-width: 768px) {
+    .overview__banner{
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+
+    .banner__title{
+        font-size: 2rem;
+    }
+
+    .banner__arrow{
+        width: 2rem;
+    }
+    
+}

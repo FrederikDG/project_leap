@@ -3,7 +3,7 @@
   font-weight: 500;
   color: var(--color-black);
   font-family: "universal sans 306", sans-serif;
-  text-align: center;
+  text-align: left;
   margin-bottom: 3rem;
   text-transform: capitalize;
 }
@@ -55,9 +55,9 @@
 
 .project__goal__container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 1rem;
   width: 100%;
 }
 
@@ -75,6 +75,7 @@
   color: var(--color-primary);
   font-family: "Ivy Ora Display", sans-serif;
   max-width: 32rem;
+  margin-top: -0.2rem;
 }
 
 .flight__info__container {
@@ -238,4 +239,128 @@
   align-items: center;
   justify-content: space-between;
   margin: 2rem 6rem;
+}
+.company__logo {
+  width: 6rem;
+  height: 6rem;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 1024px) {
+  .data__container__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .flight__info__container {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0rem;
+  }
+  .search__container {
+    flex-direction: column;
+  }
+
+  .keywords__container {
+    width: unset;
+  }
+
+  .search__data__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+.timeline__chart{
+  display: none;
+}
+
+.timeline__data__container{
+display: flex;
+}
+
+  .channel__graph__container .controls {
+    flex-wrap: wrap;
+  }
+
+  .box__text__container {
+    padding: 0.25rem 0.25rem;
+  }
+
+  .campaign__data {
+    font-size: 1.5rem;
+  }
+
+  .data__container__container,
+  .search__data__container,
+  .search__container {
+    gap: 0.5rem;
+  }
+
+
+  .campaign__overview__header {
+    max-width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .campaign__title {
+    font-size: 3.5rem;
+    max-width: 18rem;
+  }
+
+  .campaign__info__container {
+    width: 100%;
+    max-width: unset;
+  }
+
+  .company__logo {
+    position: absolute;
+    right: 2rem;
+  }
+
+  .project__goal__container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .flight__accordion__container {
+    margin: 2rem 2rem;
+  }
+
+  .flight__title {
+    font-size: 2rem;
+  }
+
+  .flight__info__description {
+    font-size: 1.5rem;
+  }
+
+  #curveSelect {
+    display: none;
+  }
+
+  .channel__info__container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .campaign__overview__header {
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .company__logo {
+    width: 4rem;
+    height: 4rem;
+    right: 1rem;
+  }
+
+  .flight__accordion__container {
+    margin: 1rem 1rem;
+  }
 }

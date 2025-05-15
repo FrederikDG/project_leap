@@ -23,37 +23,46 @@ export default function Dashboard() {
   const campaigns = campaignsByCompany[activeCompanyId] || [];
   const campaign = campaigns.find((c) => c.title.trim().toLowerCase().replace(/\s+/g, "-") === campaignSlug) || {};
   const [expandedFlights, setExpandedFlights] = useState([]);
-
-  useEffect(() => {
-    if (campaignData && campaignData.flights) {
-      const currentDate = new Date();
-      const activeIndexes = campaignData.flights
-        .map((flight, idx) => {
-          const startDate = new Date(flight.startDate);
-          const endDate = new Date(flight.endDate);
-          return currentDate >= startDate && currentDate <= endDate ? idx : null;
-        })
-        .filter((idx) => idx !== null);
-      setExpandedFlights(activeIndexes);
+  const formatDate = (data) => {
+    if (typeof data === "string" && /^\d{4}-\d{2}-\d{2}$/.test(data)) {
+      const [year, month, day] = data.split("-");
+      return `${month}/${day}/${year}`;
     }
-  }, [campaignData]);
+    return data;
+  };
+  useEffect(() => {
+    const fetchCampaignData = async () => {
+      try {
+        const response = await fetch("/campaign.json");
+        const data = await response.json();
+        setCampaignData(data);
+
+        if (data && data.flights) {
+          const currentDate = new Date();
+          const activeIndexes = data.flights
+            .map((flight, idx) => {
+              const startDate = new Date(flight.startDate);
+              const endDate = new Date(flight.endDate);
+              return currentDate >= startDate && currentDate <= endDate ? idx : null;
+            })
+            .filter((idx) => idx !== null);
+          setExpandedFlights(activeIndexes);
+        }
+      } catch (error) {
+        console.error("Error fetching campaign data:", error);
+      }
+    };
+    fetchCampaignData();
+  }, []);
+
   const toggleFlight = (index) => {
     setExpandedFlights((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
   };
 
-  useEffect(() => {
-    fetch("/campaign.json")
-      .then((response) => response.json())
-      .then((data) => setCampaignData(data))
-      .catch((error) => console.error("Error fetching campaign data:", error));
-    console.log("Campaign data:", campaignData);
-  }, []);
-
   if (!campaignData) {
     return <div>Loading...</div>;
   }
-
-  const { name, budget, flights, goal, searchKeywords, mediaPlan } = campaignData;
+  const { name, budget, flights, goal, mediaPlan } = campaignData;
   return (
     <main>
       <div className="content__container campaign__overview">
@@ -68,7 +77,7 @@ export default function Dashboard() {
                   {flights.length.toLocaleString()} {flights.length === 1 ? "flight" : "flights"}
                 </strong>
               </span>{" "}
-              with a total spend of <br />
+              with a total spend of
               <strong> $ {budget.toLocaleString()}</strong>. <strong style={{ color: companyColor }}>Flight 1 is active</strong> and{" "}
               <strong style={{ color: companyColor }}>30% </strong>
               has been spent.
@@ -92,6 +101,18 @@ export default function Dashboard() {
         />
       </div>
       {flights.map((flight, index) => {
+        let bestChannel = null;
+        if (Array.isArray(flight.channels) && flight.channels.length > 0) {
+          bestChannel = flight.channels.reduce((best, channel) => {
+            if (!Array.isArray(channel.metrics) || channel.metrics.length === 0) return best;
+            const lastMetric = channel.metrics[channel.metrics.length - 1];
+            if (!best) return { channel, metric: lastMetric };
+            // Lower CPM is better; if CPM is equal, higher impressions wins
+            if (lastMetric.CPM < best.metric.CPM) return { channel, metric: lastMetric };
+            if (lastMetric.CPM === best.metric.CPM && lastMetric.impressions > best.metric.impressions) return { channel, metric: lastMetric };
+            return best;
+          }, null);
+        }
         const currentDate = new Date();
         const startDate = new Date(flight.startDate);
         const endDate = new Date(flight.endDate);
@@ -154,8 +175,8 @@ export default function Dashboard() {
                     <div className="progressbar__container">
                       <ProgressBar startDate={startDate} endDate={endDate} color={flightColor} />
                       <div className="progressbar__dates__container">
-                        <p>{flight.startDate}</p>
-                        <p>{flight.endDate}</p>
+                        <p>{formatDate(flight.startDate)}</p>
+                        <p>{formatDate(flight.endDate)}</p>
                       </div>
                     </div>
                   </div>
@@ -163,7 +184,7 @@ export default function Dashboard() {
                     <DataContainer
                       title="working media"
                       data={`$${flight.budget.toLocaleString()}`}
-                      info="Budget allocated to purchase ad inventory across all channels."
+                      info="Budget allocated across all channels."
                     />
                     <DataContainer
                       title="total spent so far"
@@ -173,7 +194,7 @@ export default function Dashboard() {
                     <DataContainer
                       title="percentage spent"
                       data={`${Number(percentageSpent).toFixed(0)}%`}
-                      info="Portion of the flight’s total budget that’s been used."
+                      info="Portion of the flight’s budget that’s been used."
                     />
                     <DataContainer title="launch date" data={flight.startDate} />
                     <DataContainer title="end date" data={flight.endDate} />
@@ -190,29 +211,27 @@ export default function Dashboard() {
                       <img src="/CHANNEL_ICON.svg" alt="OVERVIEW_ICON" />
                       <h4>Channel Breakout</h4>
                     </div>
-                    <p className="flight__info__description">
-                      The best performing channel is <span className="box__text__container"></span>
-                      with a CPM of <strong style={{ color: flightColor }}>$3.65</strong> and <strong style={{ color: flightColor }}>163,574</strong>{" "}
-                      total impressions.
-                    </p>
+                    {isActive ? (
+                      <p className="flight__info__description">
+                        The best performing channel is <span className="box__text__container">{bestChannel ? bestChannel.channel.name : "N/A"}</span>{" "}
+                        with a CPM of <strong style={{ color: flightColor }}>{bestChannel ? `$${bestChannel.metric.CPM}` : "N/A"}</strong> and{" "}
+                        <strong style={{ color: flightColor }}>{bestChannel ? bestChannel.metric.impressions.toLocaleString() : "N/A"}</strong> total
+                        impressions.
+                      </p>
+                    ) : isFinished ? (
+                      <p className="flight__info__description">
+                        The best performing channel was <span className="box__text__container">{bestChannel ? bestChannel.channel.name : "N/A"}</span>{" "}
+                        with a CPM of <strong style={{ color: flightColor }}>{bestChannel ? `$${bestChannel.metric.CPM}` : "N/A"}</strong> and{" "}
+                        <strong style={{ color: flightColor }}>{bestChannel ? bestChannel.metric.impressions.toLocaleString() : "N/A"}</strong> total
+                        impressions.
+                      </p>
+                    ) : (
+                      <p className="flight__info__description">
+                        We don't have any data for this flight yet, but we’re excited to see how it performs once it starts!
+                      </p>
+                    )}
                   </div>
-                  <ChannelGraph
-                    className="channel__graph"
-                    channels={flight.channels}
-                    data={{
-                      weeks: [
-                        { week: "2025-03-23", metrics: { impressions: 61425, cpm: 1.6, yearOverYear: 5.8 } },
-                        { week: "2025-03-30", metrics: { impressions: 121397, cpm: 1.2, yearOverYear: 6.1 } },
-                        { week: "2025-04-06", metrics: { impressions: 90157, cpm: 1.58, yearOverYear: 5.26 } },
-                        { week: "2025-04-13", metrics: { impressions: 82254, cpm: 1.49, yearOverYear: 6.3 } },
-                        { week: "2025-04-20", metrics: { impressions: 124524, cpm: 1.62, yearOverYear: 5.7 } },
-                        { week: "2025-04-27", metrics: { impressions: 151745, cpm: 1.55, yearOverYear: 6.2 } },
-                        { week: "2025-05-04", metrics: { impressions: 110273, cpm: 1.57, yearOverYear: 5.9 } },
-                        { week: "2025-05-11", metrics: { impressions: 121855, cpm: 1.53, yearOverYear: 6.1 } },
-                      ],
-                    }}
-                    color={flightColor}
-                  />{" "}
+                  <ChannelGraph className="channel__graph" channels={flight.channels} color={flightColor} />{" "}
                   <div className="channels__container">
                     <div className="channel__info__container">
                       <p className="channel__info__name">Name</p>
@@ -222,7 +241,6 @@ export default function Dashboard() {
                       <p className="channel__info__benchmark">Benchmark</p>
                     </div>
                     {flight.channels?.map((channel) => {
-                      console.log("Channel data:", channel);
                       let metrics = {};
                       let previousImpressions = "";
                       if (Array.isArray(channel.metrics) && channel.metrics.length > 0) {
@@ -230,7 +248,6 @@ export default function Dashboard() {
                         if (channel.metrics.length > 1) {
                           previousImpressions = channel.metrics[channel.metrics.length - 2].impressions;
                         }
-                        console.log(previousImpressions + " " + metrics.impressions);
                       }
                       return (
                         <ChannelContainer

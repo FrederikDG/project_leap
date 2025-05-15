@@ -16,8 +16,8 @@ const Footer = () => {
       <div className="footer__container">
         <Button type="circle"  onClick={scrollToTop} image="./BUTTON_ARROW.svg" rotation="90"/>
         <div className="footer__text__container">
-        <img className="footer__svg" src="THIS.svg" alt="THIS" />
-        <p className="footer__text">Powered by This January</p></div>
+     
+        <p className="footer__text">Powered by</p>   <img className="footer__svg" src="THIS_JANUARY.svg" alt="THIS" /></div>
       </div>
     </footer>
   );

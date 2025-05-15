@@ -1,13 +1,15 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import "../styles/TimeLineChart.css";
-
+import StateFlag from "./StateFlag";
 export default function TimelineChartD3({ flights, color }) {
   const svgRef = useRef();
+  const now = new Date(); // Define 'now' here for use in JSX
 
   useEffect(() => {
-    const margin = { top: 40, right: 0, bottom: 40, left: 200 };
     const width = 1000;
+    const margin = { top: 40, right: 0, bottom: 40, left: 200 };
+
     const height = flights.length * 45 + margin.top + margin.bottom;
     const barOffset = 0;
     const now = new Date();
@@ -271,5 +273,41 @@ export default function TimelineChartD3({ flights, color }) {
     });
   }, [flights, color]);
 
-  return <svg ref={svgRef} className="timeline-chart" />;
+  return (
+    <div>
+      <svg ref={svgRef} className="timeline__chart" />
+      <div className="timeline__data__container">
+        {flights.map((flight, index) => {
+          const flightStart = new Date(`${flight.start}T00:00:00-04:00`);
+          const flightEnd = new Date(`${flight.end}T00:00:00-04:00`);
+          const isActive = now >= flightStart && now <= flightEnd;
+
+          return (
+            <div key={index} className="timeline__data__item">
+              <div className="timeline__data__item__header">
+                <div className="timeline__data__item__name">{`Flight ${index + 1}`}</div>
+                {isActive && (
+                  <StateFlag
+                    type="state"
+                    state={now < flightStart ? "inactive" : now >= flightStart && now <= flightEnd ? "active" : "finished"}
+                    name=""
+                    color={color}
+                  />
+                )}
+              </div>
+              <div
+                className="timeline__data__item__details"
+                style={{
+                  backgroundColor: isActive ? color : "#F0F0F0",
+                }}
+              >
+                <span>{`${d3.timeFormat("%b %d")(flightStart)} — ${d3.timeFormat("%b %d")(flightEnd)}`}</span>
+                <span>{`$${flight.budget.toLocaleString()}`}</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }

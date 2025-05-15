@@ -27,7 +27,7 @@ export default function Login() {
       </div>
       <div className="login__container">
         <form onSubmit={handleSubmit} autoComplete="off">
-          <div className="login__textfield__container">
+          <div className="textfield__container">
             <input
               className="login__textfield"
               autoComplete="off"

@@ -21,3 +21,11 @@
   border-radius: 1rem;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .add__button{
+    padding: 2rem;
+    gap: 1rem;
+  }
+  
+}

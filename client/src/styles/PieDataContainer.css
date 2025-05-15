@@ -32,3 +32,16 @@
 .pie__data__value {
   justify-self: flex-end;
 }
+
+@media screen and (max-width: 1024px) {
+.pie__container {
+    width: 100%;
+    justify-content: stretch;
+    align-items: stretch;
+  }
+
+  .pie__item {
+    width: unset;
+  }
+  
+}

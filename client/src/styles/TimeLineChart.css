@@ -10,4 +10,48 @@
   .active__container .active {
     font-family: "Neue Machina", sans-serif;
   }
+
+  .timeline__data__container{
+    display: none;
+  }
   
+.timeline__data__item{
+  display: flex;
+flex-direction: column;
+border-bottom: 2px var(--color-black);
+border-style: dotted;
+border-spacing: 4px;
+padding: 1rem 0;
+font-family: "Universal Sans 460", sans-serif;
+}
+
+.timeline__data__item:last-of-type {
+  border-bottom: 0px;
+}
+
+.timeline__data__item__header{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 1rem 0rem ;
+}
+
+.timeline__data__item__details{
+  padding:0.7rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+  @media screen and (max-width: 768px) {
+.timeline__chart{
+  display: none;
+}
+
+.timeline__data__container{
+display: flex;
+flex-direction: column;
+}
+  }

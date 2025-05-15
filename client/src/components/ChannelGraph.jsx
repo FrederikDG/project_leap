@@ -26,19 +26,17 @@ export default function MetricsGraph({ channels, color }) {
   const [selectedCurve, setSelectedCurve] = useState(CURVE_OPTIONS[1].key);
   const [selectedChannelIndex, setSelectedChannelIndex] = useState(0);
 
-
-
-const normalizedChannels = channels.map(channel => ({
-  ...channel,
-  data: channel.metrics.map(m => ({
-    week: m.weekStartDate,
-    impressions: m.impressions,
-    cpm: m.CPM,
-    yearOverYear: m.YOY,
-  }))
-}));
-const selectedChannelData = normalizedChannels?.[selectedChannelIndex]?.data || [];
-const weeks = selectedChannelData;
+  const normalizedChannels = channels.map((channel) => ({
+    ...channel,
+    data: channel.metrics.map((m) => ({
+      week: m.weekEndDate,
+      impressions: m.impressions,
+      cpm: m.CPM,
+      yearOverYear: m.YOY,
+    })),
+  }));
+  const selectedChannelData = normalizedChannels?.[selectedChannelIndex]?.data || [];
+  const weeks = selectedChannelData;
   useEffect(() => {
     if (!weeks.length) return;
 
@@ -48,10 +46,10 @@ const weeks = selectedChannelData;
 
     // parse & map
     const parseDate = d3.timeParse("%Y-%m-%d");
-const points = weeks.map((d) => ({
-  week: parseDate(d.week),
-  value: d[selectedMetric],
-}));
+    const points = weeks.map((d) => ({
+      week: parseDate(d.week),
+      value: d[selectedMetric],
+    }));
     // formatter for Y-axis ticks and hover flag
     const formatY = (d) => {
       const base = d >= 1000 ? `${d / 1000}k` : d;

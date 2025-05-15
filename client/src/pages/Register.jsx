@@ -33,6 +33,7 @@ export default function Register() {
       </div>
       <div className="register__container">
         <form onSubmit={handleSubmit}>
+          <div className="textfield__container">
           <input
             className="register__textfield"
             value={user.username}
@@ -54,7 +55,7 @@ export default function Register() {
             placeholder="Email"
             required
           />
-          
+          </div>
           <Button animationTrigger="hover" image="./LOGIN_ARROW.svg" onClick={handleSubmit} />
         </form>
       </div>

@@ -21,7 +21,7 @@
   width: 50px;
 }
 
-.login__textfield__container {
+.textfield__container {
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -63,5 +63,12 @@ color: var(--color-white) !important;
   position: absolute;
   top: 1rem;
   left: 1rem;
+  
+}
+
+@media screen and (max-width: 768px) {
+  .textfield__container {
+    flex-direction: column;
+  }
   
 }

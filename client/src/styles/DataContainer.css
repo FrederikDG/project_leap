@@ -1,65 +1,102 @@
 /* DataContainer.css */
 .data__container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: var(--color-grey-100);
-    padding: 1.5rem;
-    gap: 1.8rem;
-    border-radius: 1rem;
-    border: 1px solid var(--color-grey-200);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: var(--color-grey-100);
+  padding: 1.5rem;
+  gap: 1.8rem;
+  border-radius: 1rem;
+  border: 1px solid var(--color-grey-200);
+}
+
+/* title / info share the same transition settings */
+.data__title,
+.data__info {
+  font-size: 0.8rem;
+  font-family: "Neue Machina", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-grey-500);
+  max-width: 20rem;
+  transition:
+    opacity 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
+  position: relative;
+  margin: 0; /* reset default span margins */
+}
+
+/* data stays the same */
+.data__data {
+  font-size: 2rem;
+  color: var(--color-primary);
+  font-family: "Universal Sans 306", sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* info icon position */
+.info__icon {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+}
+
+/* initial states */
+.data__title {
+  opacity: 1;
+  transform: translateY(0);
+}
+.data__info {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(0.5rem);
+}
+
+/* only when the .info-hovered class is on the container */
+.data__container.info-hovered .data__title {
+  opacity: 0;
+  transform: translateY(-0.5rem);
+}
+
+.data__container.info-hovered .data__info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 768px) {
+  .data__container {
+    padding: 1rem;
+    gap: 1.5rem;
   }
-  
-  /* title / info share the same transition settings */
+
   .data__title,
   .data__info {
-    font-size: 0.8rem;
-    font-family: "Neue Machina", sans-serif;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--color-grey-500);
-    max-width: 20rem;
-    transition: opacity 0.2s ease-in-out,
-                transform 0.2s ease-in-out;
-    position: relative;
-    margin: 0; /* reset default span margins */
+    font-size: 0.7rem;
+    max-width: 12rem;
   }
-  
-  /* data stays the same */
+
   .data__data {
-    font-size: 2rem;
-    color: var(--color-primary);
-    font-family: "Universal Sans 306", sans-serif;
-    font-weight: 500;
+    font-size: 1.5rem;
+    white-space: nowrap;
   }
-  
-  /* info icon position */
+
   .info__icon {
-    position: absolute;
-    right: 1.5rem;
-    top: 1.5rem;
+  display: none;
   }
-  
-  /* initial states */
-  .data__title {
-    opacity: 1;
-    transform: translateY(0);
-  }
+}
+
+@media screen and (max-width: 480px) {
+
+  .data__title,
   .data__info {
-    position: absolute;
-    opacity: 0;
-    transform: translateY(0.5rem);
+    font-size: 0.6rem;
+    max-width: 10rem;
   }
-  
-  /* only when the .info-hovered class is on the container */
-  .data__container.info-hovered .data__title {
-    opacity: 0;
-    transform: translateY(-0.5rem);
+
+  .data__data {
+    font-size: 1.2rem;
   }
-  
-  .data__container.info-hovered .data__info {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
+}
